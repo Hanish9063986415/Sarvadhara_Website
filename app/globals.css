@@ -24,7 +24,6 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: light-sweep 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
   }
   
   .text-platinum-engraved {
@@ -161,6 +160,25 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     animation: circuit-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .marquee-container {
+    display: flex;
+    width: fit-content;
+    animation: marquee 40s linear infinite;
+  }
+
+  .marquee-container:hover {
+    animation-play-state: paused;
   }
 }
 

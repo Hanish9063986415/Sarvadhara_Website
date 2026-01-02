@@ -15,13 +15,12 @@ export default function Logo({
   className = '', 
   size = 80, 
   animated = false,
-  src = '/images/logo.png', // Default logo path
+  src = '/images/logo.png', // Default logo path - must be in public/images/
   alt = 'STI Logo - Sarvadhara Tech Innovations'
 }: LogoProps) {
   const logoContent = (
     <div 
-      className={`relative inline-flex items-center justify-center ${className}`} 
-      style={{ width: size, height: size }}
+      className={`relative inline-flex items-center justify-center ${className}`}
     >
       <Image
         src={src}
@@ -30,11 +29,11 @@ export default function Logo({
         height={size}
         className="object-contain w-full h-full"
         priority
-        quality={95}
+        quality={100}
         style={{
-          filter: 'drop-shadow(0 0 3px rgba(255,255,255,0.4))',
-          maxWidth: '100%',
-          height: 'auto',
+          filter: 'brightness(0) saturate(100%) invert(92%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(105%) contrast(100%)',
+          opacity: 1,
+          imageRendering: 'crisp-edges',
         }}
         unoptimized={src.endsWith('.svg')} // SVG files don't need optimization
       />

@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Fish, Zap, Target, TrendingUp, Award, Rocket, CheckCircle, Play } from 'lucide-react'
+import { Zap, Target, TrendingUp, Award, Rocket, CheckCircle, Play, Building2, GraduationCap, Users, Star } from 'lucide-react'
+import Shrimp from '@/components/Shrimp'
 import { useState } from 'react'
 
 const solutions = [
@@ -29,24 +30,34 @@ const solutions = [
 
 const achievements = [
   {
-    icon: Award,
-    title: 'Industry Recognition',
-    description: 'Awarded for innovation in seafood processing technology',
+    icon: Building2,
+    title: 'Vishva TBI Partnership',
+    description: 'Incubated and partnered with Vishva TBI',
+  },
+  {
+    icon: GraduationCap,
+    title: 'IIT Hyderabad & Greenko',
+    description: 'Partnered with IIT Hyderabad and Greenko through BUILD program',
   },
   {
     icon: Rocket,
-    title: 'Incubation Success',
-    description: 'Successfully incubated and accelerated by leading tech incubators',
+    title: 'IIT Ropar Partnership',
+    description: 'Partnered with IIT Ropar through Sprint South edition',
   },
   {
-    icon: CheckCircle,
-    title: 'Market Validation',
-    description: 'Proven results with multiple successful deployments',
+    icon: Users,
+    title: 'Physics Wallah Partnership',
+    description: 'Partnered with Physics Wallah School of Startups with Aarambh cohort',
   },
   {
-    icon: TrendingUp,
-    title: 'Industry Leadership',
-    description: 'Recognized as a leader in automation solutions',
+    icon: Award,
+    title: 'IIT Mandi & IIT Madras',
+    description: 'Associated with IIT Mandi and IIT Madras for prototype development and mentorship',
+  },
+  {
+    icon: Star,
+    title: 'TOP 75 Startups in India',
+    description: 'One of the TOP 75 startups in India for BUILD Program designed by IIT Hyderabad',
   },
 ]
 
@@ -68,14 +79,14 @@ export default function Product() {
             transition={{ duration: 1 }}
             className="inline-block mb-8"
           >
-            <Fish className="w-20 h-20 text-platinum-metallic mx-auto" />
+            <Shrimp size={80} className="text-platinum-metallic mx-auto" />
           </motion.div>
           <h1 className="text-6xl md:text-7xl font-luxury text-platinum-metallic mb-6">
             SAAMRAS
           </h1>
           <div className="w-24 h-0.5 bg-platinum-metallic mx-auto mb-8" />
           <p className="text-xl text-platinum-200 max-w-3xl mx-auto">
-            Revolutionary seafood processing and automation solution
+            Automated Quality Assessment and Grading Solution for Shrimp Farming
           </p>
         </motion.div>
       </section>
@@ -107,24 +118,24 @@ export default function Product() {
               Industry Challenge
             </h3>
             <p className="text-platinum-200 text-lg leading-relaxed mb-4">
-              The seafood processing industry faces significant challenges: manual labor intensity, inconsistent quality control, high operational costs, and limited scalability. Traditional methods struggle to meet modern demands for efficiency, accuracy, and throughput.
+              In aquaculture, especially in shrimp culture, quality assessment and grading are considered crucial processes. Currently, these processes are done manually by engaging 20-30 members in each task. As it is a manual process, errors occur frequently and accuracy is very less, leading to significant business losses for seafood processing units and aqua farmers.
             </p>
             <ul className="space-y-3 text-platinum-200">
               <li className="flex items-start">
                 <span className="text-platinum-metallic mr-3">•</span>
-                <span>Time-consuming manual processing operations</span>
+                <span>Manual quality assessment requires 20-30 workers per task</span>
               </li>
               <li className="flex items-start">
                 <span className="text-platinum-metallic mr-3">•</span>
-                <span>Quality inconsistencies affecting product standards</span>
+                <span>High error rates and low accuracy in manual grading</span>
               </li>
               <li className="flex items-start">
                 <span className="text-platinum-metallic mr-3">•</span>
-                <span>Rising labor costs and workforce challenges</span>
+                <span>Significant labor costs and operational inefficiencies</span>
               </li>
               <li className="flex items-start">
                 <span className="text-platinum-metallic mr-3">•</span>
-                <span>Limited ability to scale operations efficiently</span>
+                <span>Business losses due to inconsistent quality and grading errors</span>
               </li>
             </ul>
           </motion.div>
@@ -140,10 +151,13 @@ export default function Product() {
               The SAAMRAS Solution
             </h3>
             <p className="text-platinum-200 text-lg leading-relaxed mb-4">
-              SAAMRAS is a cutting-edge automation solution designed specifically for seafood processing. Combining advanced robotics, intelligent systems, and precision engineering, SAAMRAS transforms how seafood is processed, ensuring unparalleled quality, efficiency, and scalability.
+              SAAMRAS is a revolutionary product introduced to automate shrimp farming, specifically designed for aquaculture and shrimp culture. Quality assessment and grading are considered crucial processes in the industry, traditionally done manually by engaging 20-30 members in each task. As a manual process, errors occur frequently and accuracy is very low.
+            </p>
+            <p className="text-platinum-300 text-lg leading-relaxed mb-4">
+              Our product automates the process of quality assessment and grading by producing the best accuracy at an affordable cost, completely avoiding human intervention from the process. SAAMRAS perfectly targets seafood processing units and aqua farmers, helping them avoid losses in their business.
             </p>
             <p className="text-platinum-300 text-lg leading-relaxed">
-              Our solution addresses every critical pain point in the industry, delivering measurable improvements in productivity, quality control, cost management, and operational scalability. SAAMRAS represents the future of seafood processing—intelligent, automated, and transformative.
+              By eliminating manual labor and human error, SAAMRAS delivers consistent, high-quality results that transform shrimp farming operations, ensuring better profitability and operational efficiency for seafood processing units and aqua farmers.
             </p>
           </motion.div>
         </div>
@@ -256,7 +270,7 @@ export default function Product() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {achievements.map((achievement, index) => {
             const Icon = achievement.icon
             return (
@@ -297,7 +311,7 @@ export default function Product() {
             Ready to Transform Your Operations?
           </h2>
           <p className="text-xl text-platinum-200 mb-8">
-            Discover how SAAMRAS can revolutionize your seafood processing operations
+            Discover how SAAMRAS can transform your shrimp farming and aquaculture operations
           </p>
           <motion.a
             href="/services"

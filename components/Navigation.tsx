@@ -11,6 +11,7 @@ const navItems = [
   { name: 'Home', path: '/' },
   { name: 'Services', path: '/services' },
   { name: 'SAAMRAS', path: '/product' },
+  { name: 'Contact Us', path: '/services#contact' },
 ]
 
 export default function Navigation() {
@@ -25,24 +26,47 @@ export default function Navigation() {
       className="fixed top-0 left-0 right-0 z-50 glass-morphism border-b-2 border-platinum-300/40"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-28 md:h-32">
-          <Link href="/" className="flex items-center space-x-3 group">
+        <div className="relative flex items-center h-24 md:h-28">
+          {/* Logo - Left Aligned */}
+          <Link href="/" className="flex items-center group z-10 h-full -ml-2 md:-ml-4">
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="flex items-center"
             >
-              <Logo size={350} className="text-platinum-metallic w-auto h-20 max-h-20" />
+              <Logo 
+                size={600} 
+                className="text-platinum-metallic w-auto h-28 md:h-32 max-h-32" 
+                src="/images/logo.png"
+                alt="Sarvadhara Tech Innovations Logo"
+              />
             </motion.div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden md:flex items-center justify-center space-x-8 absolute left-1/2 transform -translate-x-1/2 w-full">
             {navItems.map((item) => {
-              const isActive = pathname === item.path
+              const isActive = pathname === item.path || (item.path.includes('#') && pathname === item.path.split('#')[0])
+              const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+                if (item.path.includes('#')) {
+                  e.preventDefault()
+                  const [path, hash] = item.path.split('#')
+                  if (pathname === path) {
+                    // If already on the page, scroll to the section
+                    const element = document.getElementById(hash)
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                    }
+                  } else {
+                    // Navigate to the page first, then scroll
+                    window.location.href = item.path
+                  }
+                }
+              }
               return (
                 <Link
                   key={item.path}
                   href={item.path}
+                  onClick={handleClick}
                   className="relative group"
                 >
                   <span
@@ -70,7 +94,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-platinum-200 hover:text-platinum-metallic transition-colors"
+            className="md:hidden text-platinum-200 hover:text-platinum-metallic transition-colors z-10 ml-auto"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -85,12 +109,31 @@ export default function Navigation() {
             className="md:hidden pb-4 space-y-4"
           >
             {navItems.map((item) => {
-              const isActive = pathname === item.path
+              const isActive = pathname === item.path || (item.path.includes('#') && pathname === item.path.split('#')[0])
+              const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+                setMobileMenuOpen(false)
+                if (item.path.includes('#')) {
+                  e.preventDefault()
+                  const [path, hash] = item.path.split('#')
+                  if (pathname === path) {
+                    // If already on the page, scroll to the section
+                    setTimeout(() => {
+                      const element = document.getElementById(hash)
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                      }
+                    }, 100)
+                  } else {
+                    // Navigate to the page first, then scroll
+                    window.location.href = item.path
+                  }
+                }
+              }
               return (
                 <Link
                   key={item.path}
                   href={item.path}
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={handleClick}
                   className={`block text-base font-medium transition-colors ${
                     isActive
                       ? 'text-platinum-metallic'

@@ -1,27 +1,17 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowDown, Code, Fish, Users } from 'lucide-react'
+import { ArrowDown, Code, Users, ArrowRight, Sprout, Trophy, GraduationCap, Briefcase, Heart, Palette, ExternalLink, User, Scale, Wrench, Settings } from 'lucide-react'
+import Shrimp from '@/components/Shrimp'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-luxury-black">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-luxury-black via-luxury-black to-luxury-black" />
-        
-        {/* Classic Grid Pattern */}
-        <div className="absolute inset-0 opacity-[0.03]">
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,1)" strokeWidth="1"/>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
-        </div>
 
         {/* Elegant Corner Accents */}
         <div className="absolute top-0 left-0 w-64 h-64 border-t-2 border-l-2 border-platinum-metallic/10" />
@@ -29,136 +19,71 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-64 h-64 border-b-2 border-l-2 border-platinum-metallic/10" />
         <div className="absolute bottom-0 right-0 w-64 h-64 border-b-2 border-r-2 border-platinum-metallic/10" />
 
-        {/* Classic Geometric Circles */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 0.08, scale: 1 }}
-          transition={{ duration: 2, delay: 0.5 }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full border border-platinum-metallic/20"
-        />
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 0.08, scale: 1 }}
-          transition={{ duration: 2, delay: 0.7 }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full border border-platinum-metallic/20"
-        />
-
-        {/* Elegant Diagonal Lines */}
-        <svg className="absolute inset-0 w-full h-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0" y1="0" x2="100%" y2="100%" stroke="rgba(255,255,255,1)" strokeWidth="1" />
-          <line x1="100%" y1="0" x2="0" y2="100%" stroke="rgba(255,255,255,1)" strokeWidth="1" />
-        </svg>
-
-        {/* Subtle Floating Particles */}
-        {[...Array(12)].map((_, i) => {
-          const positions = [
-            { left: '10%', top: '20%' },
-            { left: '85%', top: '25%' },
-            { left: '15%', top: '75%' },
-            { left: '80%', top: '70%' },
-            { left: '5%', top: '50%' },
-            { left: '95%', top: '45%' },
-            { left: '25%', top: '10%' },
-            { left: '75%', top: '15%' },
-            { left: '30%', top: '85%' },
-            { left: '70%', top: '80%' },
-            { left: '50%', top: '5%' },
-            { left: '50%', top: '95%' },
-          ];
-          return (
+        {/* Content Layout */}
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex items-end justify-start min-h-screen pt-40 md:pt-52 lg:pt-64 pb-32 md:pb-40">
+            
+            {/* Content */}
             <motion.div
-              key={`particle-${i}`}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{
-                opacity: [0, 0.3, 0.2, 0.3, 0],
-                scale: [0, 1, 0.8, 1, 0],
-              }}
-              transition={{
-                duration: 8 + (i % 3) * 2,
-                repeat: Infinity,
-                delay: i * 0.5,
-                ease: 'easeInOut',
-              }}
-              className="absolute rounded-full bg-platinum-metallic/20"
-              style={{
-                width: '4px',
-                height: '4px',
-                left: positions[i].left,
-                top: positions[i].top,
-                boxShadow: '0 0 8px rgba(255,255,255,0.3)',
-              }}
-            />
-          );
-        })}
-
-        {/* Classic Ornamental Lines */}
-        <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-platinum-metallic/10 to-transparent" />
-        <div className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-platinum-metallic/10 to-transparent" />
-
-        {/* Elegant Side Accents */}
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: '200px' }}
-          transition={{ duration: 1.5, delay: 0.8 }}
-          className="absolute left-0 top-1/2 h-px bg-platinum-metallic/15"
-        />
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: '200px' }}
-          transition={{ duration: 1.5, delay: 1 }}
-          className="absolute right-0 top-1/2 h-px bg-platinum-metallic/15"
-        />
-        
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="relative z-20 text-center px-6 max-w-5xl mx-auto"
-        >
-          <motion.h1
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-display font-light mb-8 text-platinum-metallic text-hero-premium-regular leading-[1.1]"
-          >
-            Sarvadhara
-          </motion.h1>
-          
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="text-xl md:text-2xl text-platinum-200 mb-12 font-light tracking-wide"
-          >
-            Shaping the Future with Technological Excellence
-          </motion.p>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
-            <Link
-              href="/services"
-              className="px-8 py-4 bg-platinum-metallic/15 border-2 border-platinum-300/60 text-platinum-metallic font-medium rounded-lg hover:bg-platinum-metallic/25 hover:border-platinum-200 transition-all duration-300 premium-hover"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex flex-col justify-end space-y-8 text-left max-w-5xl mb-16 md:mb-24"
             >
-              Explore Services
-            </Link>
-            <Link
-              href="/product"
-              className="px-8 py-4 bg-platinum-metallic/15 border-2 border-platinum-300/60 text-platinum-metallic font-medium rounded-lg hover:bg-platinum-metallic/25 hover:border-platinum-200 transition-all duration-300 premium-hover"
-            >
-              Discover SAAMRAS
-            </Link>
-          </motion.div>
-        </motion.div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="space-y-2"
+              >
+                <h1 className="text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-display font-bold text-platinum-metallic uppercase leading-[0.95] tracking-tight">
+                  WE BUILD WHAT
+                </h1>
+                <h1 className="text-3xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-display font-bold text-platinum-metallic uppercase leading-[0.95] tracking-tight">
+                  THE FUTURE RUNS ON
+                </h1>
+              </motion.div>
+              
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.6 }}
+                className="text-sm md:text-base lg:text-base text-platinum-200 font-light tracking-normal leading-relaxed max-w-2xl mt-8"
+              >
+                Sarvadhara Tech Innovations was founded under the belief that a future where businesses are empowered with cutting-edge, high-tech solutions is fundamentally more exciting than one where they are not.
+              </motion.p>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="flex flex-col sm:flex-row gap-4 justify-start items-center pt-6"
+              >
+                <Link
+                  href="/services"
+                  className="group inline-flex items-center justify-center px-6 py-3 border border-platinum-metallic text-platinum-metallic font-normal text-sm uppercase tracking-wider hover:bg-platinum-metallic hover:text-luxury-black transition-all duration-300"
+                >
+                  EXPLORE
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link
+                  href="/product"
+                  className="group inline-flex items-center justify-center px-6 py-3 border border-platinum-metallic text-platinum-metallic font-normal text-sm uppercase tracking-wider hover:bg-platinum-metallic hover:text-luxury-black transition-all duration-300"
+                >
+                  DISCOVER SAAMRAS
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
+            </motion.div>
+
+          </div>
+        </div>
 
         {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, repeat: Infinity, repeatType: 'reverse', duration: 2 }}
+          transition={{ delay: 1.5, repeat: Infinity, repeatType: 'reverse', duration: 2 }}
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30"
         >
           <ArrowDown className="w-6 h-6 text-platinum-200" />
@@ -298,7 +223,7 @@ export default function Home() {
           >
             <div className="flex items-center mb-6">
               <div className="w-16 h-16 rounded-lg bg-platinum-metallic/15 border-2 border-platinum-300/60 flex items-center justify-center mr-4 group-hover:bg-platinum-metallic/25 transition-colors">
-                <Fish className="w-8 h-8 text-platinum-metallic" />
+                <Shrimp size={32} className="text-platinum-metallic" />
               </div>
               <h3 className="text-4xl font-luxury text-platinum-metallic">Product Division</h3>
             </div>
@@ -306,22 +231,30 @@ export default function Home() {
             <div className="mb-6">
               <h4 className="text-2xl font-luxury text-platinum-metallic mb-4">SAAMRAS</h4>
               <p className="text-platinum-300 text-lg leading-relaxed mb-6">
-                Revolutionary seafood processing and automation product that transforms the industry through innovation, efficiency, and scalability.
+                Automated quality assessment and grading solution for shrimp farming in aquaculture. Eliminates manual processes, reduces errors, and delivers the best accuracy at an affordable cost.
               </p>
             </div>
             
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-platinum-metallic" />
-                <span className="text-platinum-200">Advanced Automation Technology</span>
+                <span className="text-platinum-200">Automated Quality Assessment & Grading</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-platinum-metallic" />
-                <span className="text-platinum-300">Unmatched Processing Efficiency</span>
+                <span className="text-platinum-300">Eliminates 20-30 Manual Workers Per Task</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-platinum-metallic" />
-                <span className="text-platinum-300">Scalable Enterprise Solutions</span>
+                <span className="text-platinum-300">Best Accuracy at Affordable Cost</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-platinum-metallic" />
+                <span className="text-platinum-300">Zero Human Intervention</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-platinum-metallic" />
+                <span className="text-platinum-300">Helps Avoid Business Losses</span>
               </div>
             </div>
             
@@ -333,6 +266,298 @@ export default function Home() {
             </Link>
           </motion.div>
         </div>
+      </section>
+
+      {/* Our Recent Works */}
+      <section className="py-32 px-6 max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-5xl md:text-6xl font-luxury text-platinum-metallic mb-6">
+            Our Recent Works
+          </h2>
+          <div className="w-24 h-0.5 bg-platinum-metallic mx-auto mb-8" />
+          <p className="text-platinum-200 text-lg max-w-2xl mx-auto">
+            Showcasing excellence across diverse industries and platforms
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Plant Darbar - Featured */}
+          <motion.a
+            href="https://www.plantdarbar.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0 }}
+            whileHover={{ y: -10, scale: 1.02 }}
+            className="glass-morphism rounded-xl overflow-hidden premium-hover group block ring-2 ring-green-400/30"
+          >
+            <div className="h-48 md:h-56 bg-gradient-to-br from-green-900/30 via-platinum-900/20 to-luxury-black relative overflow-hidden group-hover:from-green-900/40 transition-all duration-300">
+              {/* Website Preview - Using iframe for live preview */}
+              <div className="absolute inset-0 w-full h-full">
+                <iframe
+                  src="https://www.plantdarbar.com/"
+                  className="w-full h-full border-0 scale-75 origin-top-left"
+                  style={{ width: '133.33%', height: '133.33%' }}
+                  title="Plant Darbar Homepage Preview"
+                  loading="lazy"
+                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                  allow="fullscreen"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+                {/* Overlay gradient for better visual integration */}
+                <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/10 via-transparent to-luxury-black/30 pointer-events-none" />
+              </div>
+              {/* Featured Badge */}
+              <div className="absolute top-4 right-4 bg-green-500/20 border border-green-400/40 px-3 py-1 rounded-full backdrop-blur-sm z-10">
+                <span className="text-green-300 text-xs font-medium">Featured</span>
+              </div>
+            </div>
+            <div className="p-4 md:p-5">
+              <span className="text-xs text-platinum-500 uppercase tracking-wider mb-1.5 block">
+                E-Commerce Website
+              </span>
+              <div className="flex items-center justify-between mb-1.5">
+                <h3 className="text-xl md:text-2xl font-luxury text-platinum-metallic">
+                  Plant Darbar
+                </h3>
+                <ExternalLink className="w-4 h-4 text-platinum-metallic/50 group-hover:text-platinum-metallic transition-colors" />
+              </div>
+              <p className="text-platinum-200 text-xs md:text-sm leading-relaxed mb-3">
+                Beautiful plant e-commerce platform featuring sustainable indoor and balcony plants in upcycled containers.
+              </p>
+              <div className="pt-3 border-t border-platinum-300/20">
+                <span className="text-platinum-metallic text-sm font-medium hover:text-platinum-200 transition-colors inline-flex items-center gap-2">
+                  Visit Website
+                  <ExternalLink className="w-4 h-4" />
+                </span>
+              </div>
+            </div>
+          </motion.a>
+
+          {/* SportTribe */}
+          <motion.a
+            href="https://sportstribenew.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            whileHover={{ y: -10, scale: 1.02 }}
+            className="glass-morphism rounded-xl overflow-hidden premium-hover group block"
+          >
+            <div className="h-48 md:h-56 bg-gradient-to-br from-platinum-900/20 to-luxury-black relative overflow-hidden group-hover:from-platinum-900/30 transition-all duration-300">
+              {/* Website Preview */}
+              <div className="absolute inset-0 w-full h-full">
+                <iframe
+                  src="https://sportstribenew.vercel.app/"
+                  className="w-full h-full border-0 scale-75 origin-top-left"
+                  style={{ width: '133.33%', height: '133.33%' }}
+                  title="SportTribe Homepage Preview"
+                  loading="lazy"
+                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                  allow="fullscreen"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/10 via-transparent to-luxury-black/30 pointer-events-none" />
+              </div>
+            </div>
+            <div className="p-4 md:p-5">
+              <span className="text-xs text-platinum-500 uppercase tracking-wider mb-1.5 block">
+                Sports Management Web App
+              </span>
+              <div className="flex items-center justify-between mb-1.5">
+                <h3 className="text-xl md:text-2xl font-luxury text-platinum-metallic">
+                  SportTribe
+                </h3>
+                <ExternalLink className="w-4 h-4 text-platinum-metallic/50 group-hover:text-platinum-metallic transition-colors" />
+              </div>
+              <p className="text-platinum-200 text-xs md:text-sm leading-relaxed mb-3">
+                End-to-end sports management platform with comprehensive features for team management, scheduling, and analytics.
+              </p>
+              <div className="pt-3 border-t border-platinum-300/20">
+                <span className="text-platinum-metallic text-sm font-medium hover:text-platinum-200 transition-colors inline-flex items-center gap-2">
+                  Visit Website
+                  <ExternalLink className="w-4 h-4" />
+                </span>
+              </div>
+            </div>
+          </motion.a>
+
+          {/* My Career Technology */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            whileHover={{ y: -10, scale: 1.02 }}
+            className="glass-morphism rounded-xl overflow-hidden premium-hover group"
+          >
+            <div className="h-36 md:h-40 bg-gradient-to-br from-platinum-900/20 to-luxury-black flex items-center justify-center group-hover:from-platinum-900/30 transition-all duration-300">
+              <GraduationCap className="w-12 h-12 md:w-14 md:h-14 text-platinum-metallic/30 group-hover:scale-110 transition-transform duration-300" />
+            </div>
+            <div className="p-6">
+              <span className="text-xs text-platinum-500 uppercase tracking-wider mb-1.5 block">
+                Learning Management System
+              </span>
+              <h3 className="text-xl md:text-2xl font-luxury text-platinum-metallic mb-1.5">
+                My Career Technology
+              </h3>
+              <p className="text-platinum-200 text-xs md:text-sm leading-relaxed">
+                Enterprise-level learning management system for comprehensive educational management and course delivery.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Political Analyst Portfolio */}
+          <motion.a
+            href="https://personal-portfolio-alpha-eight-59.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            whileHover={{ y: -10, scale: 1.02 }}
+            className="glass-morphism rounded-xl overflow-hidden premium-hover group block"
+          >
+            <div className="h-48 md:h-56 bg-gradient-to-br from-platinum-900/20 to-luxury-black relative overflow-hidden group-hover:from-platinum-900/30 transition-all duration-300">
+              {/* Website Preview */}
+              <div className="absolute inset-0 w-full h-full">
+                <iframe
+                  src="https://personal-portfolio-alpha-eight-59.vercel.app/"
+                  className="w-full h-full border-0 scale-75 origin-top-left"
+                  style={{ width: '133.33%', height: '133.33%' }}
+                  title="Political Analyst Portfolio Homepage Preview"
+                  loading="lazy"
+                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                  allow="fullscreen"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/10 via-transparent to-luxury-black/30 pointer-events-none" />
+              </div>
+            </div>
+            <div className="p-4 md:p-5">
+              <span className="text-xs text-platinum-500 uppercase tracking-wider mb-1.5 block">
+                Professional Portfolio
+              </span>
+              <div className="flex items-center justify-between mb-1.5">
+                <h3 className="text-xl md:text-2xl font-luxury text-platinum-metallic">
+                  Political Analyst Portfolio
+                </h3>
+                <ExternalLink className="w-4 h-4 text-platinum-metallic/50 group-hover:text-platinum-metallic transition-colors" />
+              </div>
+              <p className="text-platinum-200 text-xs md:text-sm leading-relaxed mb-3">
+                Elegant professional portfolio showcasing political analysis work, research, and expertise.
+              </p>
+              <div className="pt-3 border-t border-platinum-300/20">
+                <span className="text-platinum-metallic text-sm font-medium hover:text-platinum-200 transition-colors inline-flex items-center gap-2">
+                  Visit Website
+                  <ExternalLink className="w-4 h-4" />
+                </span>
+              </div>
+            </div>
+          </motion.a>
+
+          {/* NGO Platform */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            whileHover={{ y: -10, scale: 1.02 }}
+            className="glass-morphism rounded-xl overflow-hidden premium-hover group"
+          >
+            <div className="h-36 md:h-40 bg-gradient-to-br from-platinum-900/20 to-luxury-black flex items-center justify-center group-hover:from-platinum-900/30 transition-all duration-300">
+              <Heart className="w-12 h-12 md:w-14 md:h-14 text-platinum-metallic/30 group-hover:scale-110 transition-transform duration-300" />
+            </div>
+            <div className="p-6">
+              <span className="text-xs text-platinum-500 uppercase tracking-wider mb-1.5 block">
+                NGO Website & Management System
+              </span>
+              <h3 className="text-xl md:text-2xl font-luxury text-platinum-metallic mb-1.5">
+                NGO Platform
+              </h3>
+              <p className="text-platinum-200 text-xs md:text-sm leading-relaxed">
+                Comprehensive NGO website with management system, donation portal, and project exploration.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Mithunam Wall Art */}
+          <motion.a
+            href="https://mithunam-sample.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            whileHover={{ y: -10, scale: 1.02 }}
+            className="glass-morphism rounded-xl overflow-hidden premium-hover group block"
+          >
+            <div className="h-48 md:h-56 bg-gradient-to-br from-platinum-900/20 to-luxury-black relative overflow-hidden group-hover:from-platinum-900/30 transition-all duration-300">
+              {/* Website Preview */}
+              <div className="absolute inset-0 w-full h-full">
+                <iframe
+                  src="https://mithunam-sample.vercel.app/"
+                  className="w-full h-full border-0 scale-75 origin-top-left"
+                  style={{ width: '133.33%', height: '133.33%' }}
+                  title="Mithunam Wall Art Homepage Preview"
+                  loading="lazy"
+                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                  allow="fullscreen"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/10 via-transparent to-luxury-black/30 pointer-events-none" />
+              </div>
+            </div>
+            <div className="p-4 md:p-5">
+              <span className="text-xs text-platinum-500 uppercase tracking-wider mb-1.5 block">
+                Creative Portfolio Website
+              </span>
+              <div className="flex items-center justify-between mb-1.5">
+                <h3 className="text-xl md:text-2xl font-luxury text-platinum-metallic">
+                  Mithunam Wall Art
+                </h3>
+                <ExternalLink className="w-4 h-4 text-platinum-metallic/50 group-hover:text-platinum-metallic transition-colors" />
+              </div>
+              <p className="text-platinum-200 text-xs md:text-sm leading-relaxed mb-3">
+                Stunning portfolio website for an interior designer specializing in wall art and creative designs.
+              </p>
+              <div className="pt-3 border-t border-platinum-300/20">
+                <span className="text-platinum-metallic text-sm font-medium hover:text-platinum-200 transition-colors inline-flex items-center gap-2">
+                  Visit Website
+                  <ExternalLink className="w-4 h-4" />
+                </span>
+              </div>
+            </div>
+          </motion.a>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-center mt-12"
+        >
+          <Link
+            href="/services"
+            className="inline-flex items-center px-8 py-4 border-2 border-platinum-300/60 text-platinum-metallic font-medium hover:border-platinum-200 hover:bg-platinum-metallic/10 transition-all duration-300"
+          >
+            View All Works
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </Link>
+        </motion.div>
       </section>
 
       {/* Founders & Directors */}
@@ -353,27 +578,69 @@ export default function Home() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[1, 2, 3].map((i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="glass-morphism rounded-xl p-8 text-center premium-hover"
-            >
-              <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-platinum-metallic/15 border-2 border-platinum-300/60 flex items-center justify-center overflow-hidden">
-                <Users className="w-16 h-16 text-platinum-metallic/50" />
-              </div>
-              <h3 className="text-2xl font-luxury text-platinum-metallic mb-2">Founder Name</h3>
-              <p className="text-platinum-200 text-sm mb-4">Director / Co-Founder</p>
-              <p className="text-platinum-300 text-sm leading-relaxed">
-                Visionary leader with expertise in technology and innovation
-              </p>
-            </motion.div>
-          ))}
+        <div className="space-y-12">
+          {/* Directors Row - Centered */}
+          <div className="flex justify-center gap-8">
+            {[
+              { name: 'Director 1', role: 'Director', icon: User },
+              { name: 'Director 2', role: 'Director', icon: User },
+            ].map((member, i) => {
+              const Icon = member.icon
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="glass-morphism rounded-xl p-8 text-center premium-hover w-full max-w-sm"
+                >
+                  <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-platinum-metallic/15 border-2 border-platinum-300/60 flex items-center justify-center overflow-hidden">
+                    <Icon className="w-16 h-16 text-platinum-metallic/50" />
+                  </div>
+                  <h3 className="text-2xl font-luxury text-platinum-metallic mb-2">{member.name}</h3>
+                  <p className="text-platinum-200 text-sm mb-4">{member.role}</p>
+                  <p className="text-platinum-300 text-sm leading-relaxed">
+                    Strategic leadership and vision for company growth
+                  </p>
+                </motion.div>
+              )
+            })}
+          </div>
+
+          {/* Founder, Legal Advisor, Head of Product Development Row */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { name: 'Founder and CEO', role: 'Founder and CEO', icon: Users },
+              { name: 'Legal Advisor', role: 'Legal Advisor', icon: Scale },
+              { name: 'Head of Product Development', role: 'Head of Product Development', icon: Wrench },
+            ].map((member, i) => {
+              const Icon = member.icon
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: (i + 2) * 0.1 }}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="glass-morphism rounded-xl p-8 text-center premium-hover"
+                >
+                  <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-platinum-metallic/15 border-2 border-platinum-300/60 flex items-center justify-center overflow-hidden">
+                    <Icon className="w-16 h-16 text-platinum-metallic/50" />
+                  </div>
+                  <h3 className="text-2xl font-luxury text-platinum-metallic mb-2">{member.name}</h3>
+                  <p className="text-platinum-200 text-sm mb-4">{member.role}</p>
+                  <p className="text-platinum-300 text-sm leading-relaxed">
+                    {member.role === 'Founder and CEO' && 'Visionary leader driving innovation and excellence'}
+                    {member.role === 'Legal Advisor' && 'Expert legal guidance and compliance management'}
+                    {member.role === 'Head of Product Development' && 'Leading product innovation and development'}
+                  </p>
+                </motion.div>
+              )
+            })}
+          </div>
         </div>
       </section>
     </main>

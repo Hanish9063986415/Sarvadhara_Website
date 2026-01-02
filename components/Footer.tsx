@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Mail, Phone, MapPin } from 'lucide-react'
+import Logo from './Logo'
 
 export default function Footer() {
   return (
@@ -16,12 +17,14 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-luxury text-platinum-metallic mb-4">
-              Sarvadhara Tech Innovations
-            </h3>
-            <p className="text-platinum-200 mb-4 leading-relaxed">
-              Shaping the Future with Technological Excellence
-            </p>
+            <Link href="/" className="inline-block mb-4">
+              <Logo 
+                size={400} 
+                className="w-auto h-20 md:h-32 lg:h-36 max-h-36" 
+                src="/images/logo.png"
+                alt="Sarvadhara Tech Innovations Logo"
+              />
+            </Link>
             <p className="text-platinum-500 text-sm">
               Premium technology solutions and innovative products for the modern enterprise.
             </p>
@@ -65,15 +68,28 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <Mail className="w-5 h-5 text-platinum-metallic mt-0.5 flex-shrink-0" />
-                <span className="text-platinum-200 text-sm">info@sarvadharatech.com</span>
+                <a 
+                  href="mailto:Sarvadharatechinnovations@gmail.com" 
+                  className="text-platinum-200 text-sm hover:text-platinum-metallic transition-colors break-all"
+                >
+                  Sarvadharatechinnovations@gmail.com
+                </a>
               </li>
               <li className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 text-platinum-metallic mt-0.5 flex-shrink-0" />
-                <span className="text-platinum-200 text-sm">+91 XXX XXX XXXX</span>
+                <a 
+                  href="tel:+919063986415" 
+                  className="text-platinum-200 text-sm hover:text-platinum-metallic transition-colors"
+                >
+                  +91 9063986415
+                </a>
               </li>
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-platinum-metallic mt-0.5 flex-shrink-0" />
-                <span className="text-platinum-200 text-sm">India</span>
+                <div className="text-platinum-200 text-sm space-y-1">
+                  <div>Vijayawada, Andhra Pradesh, India</div>
+                  <div>Hyderabad, Telangana, India</div>
+                </div>
               </li>
             </ul>
           </motion.div>

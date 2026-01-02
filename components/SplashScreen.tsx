@@ -56,28 +56,16 @@ export default function SplashScreen() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="flex justify-center mb-8 w-full"
+              className="flex justify-center w-full"
             >
               <Logo 
-                size={1200} 
+                size={2400} 
                 animated={true} 
-                className="text-platinum-metallic w-full max-w-[90vw] h-auto" 
+                className="text-platinum-metallic w-full max-w-[75vw] h-auto" 
+                src="/images/logo.png"
+                alt="Sarvadhara Tech Innovations Logo"
               />
             </motion.div>
-            <motion.div
-              initial={{ width: 0, opacity: 0 }}
-              animate={{ width: '400px', opacity: 1 }}
-              transition={{ duration: 0.8, delay: 1, ease: 'easeOut' }}
-              className="h-px bg-platinum-metallic mx-auto mb-4"
-            />
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.2, ease: 'easeOut' }}
-              className="text-sm md:text-base text-platinum-300 tracking-widest uppercase font-light"
-            >
-              Sarvadhara Tech Innovations
-            </motion.p>
           </motion.div>
 
           {/* Fade out overlay */}
