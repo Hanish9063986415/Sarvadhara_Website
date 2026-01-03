@@ -231,23 +231,15 @@ export default function Product() {
           transition={{ duration: 0.8 }}
           className="relative rounded-xl overflow-hidden glass-morphism"
         >
-          <div className="aspect-video bg-gradient-to-br from-platinum-900/20 to-luxury-black flex items-center justify-center relative">
-            {!videoPlaying ? (
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => setVideoPlaying(true)}
-                className="absolute inset-0 flex items-center justify-center group"
-              >
-                <div className="w-24 h-24 rounded-full bg-platinum-metallic/20 border-2 border-platinum-metallic/50 flex items-center justify-center group-hover:bg-platinum-metallic/30 transition-colors">
-                  <Play className="w-12 h-12 text-platinum-metallic ml-2" fill="currentColor" />
-                </div>
-              </motion.button>
-            ) : (
-              <div className="w-full h-full flex items-center justify-center">
-                <p className="text-platinum-200">Video Player Placeholder</p>
-              </div>
-            )}
+          <div className="aspect-video bg-gradient-to-br from-platinum-900/20 to-luxury-black relative">
+            <video
+              className="w-full h-full object-cover"
+              controls
+              poster="/Product Showcase/Product showcase Video.mp4"
+            >
+              <source src="/Product Showcase/Product showcase Video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </motion.div>
       </section>
