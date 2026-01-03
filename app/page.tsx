@@ -619,7 +619,7 @@ export default function Home() {
           {/* Directors Row - Centered */}
           <div className="flex justify-center gap-12 md:gap-16">
             {[
-              { name: 'Sundarapalli Satheesh', role: 'Director', image: '/images/team/director-1.jpeg' },
+              { name: 'Sundarapalli Sateesh', role: 'Director', image: '/images/team/director-1.jpeg' },
               { name: 'Sundarapalli Suneetha', role: 'Director', image: '/images/team/Director-2.jpeg' },
             ].map((member, i) => {
               return (
@@ -662,8 +662,8 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16">
             {[
               { name: 'Hanish Venkat', role: 'Founder and CEO', image: '/images/team/founder-ceo.jpeg', icon: Users },
-              { name: 'Tharun', role: 'Legal Advisor', image: '/images/team/legal-advisor.jpeg', icon: Scale },
-              { name: 'Gandham Prakash', role: 'Head of Product Development', image: '/images/team/head-product.jpeg', icon: Wrench },
+              { name: 'Tarun', role: 'Legal Advisor', image: '/images/team/legal-advisor.jpeg', icon: Scale },
+              { name: 'Prakash', role: 'Head of Product Development', image: '/images/team/Prakash.png', icon: Wrench },
             ].map((member, i) => {
               const Icon = member.icon
               return (
@@ -685,7 +685,7 @@ export default function Home() {
                       className="w-full h-full object-cover"
                       style={
                         member.role === 'Head of Product Development' 
-                          ? { objectPosition: '50% 22%' } 
+                          ? { objectPosition: '90% 40%' } 
                           : member.role === 'Legal Advisor'
                           ? { objectPosition: '50% 25%' }
                           : { objectPosition: '50% 30%' }
