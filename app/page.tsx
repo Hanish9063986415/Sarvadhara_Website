@@ -341,10 +341,7 @@ export default function Home() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Plant Darbar - Featured */}
-          <motion.a
-            href="https://www.plantdarbar.com/"
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -374,25 +371,25 @@ export default function Home() {
                 <h3 className="text-xl md:text-2xl font-luxury text-platinum-metallic">
                   Plant Darbar
                 </h3>
-                <ExternalLink className="w-4 h-4 text-platinum-metallic/50 group-hover:text-platinum-metallic transition-colors" />
               </div>
               <p className="text-platinum-200 text-xs md:text-sm leading-relaxed mb-3">
                 Beautiful plant e-commerce platform featuring sustainable indoor and balcony plants in upcycled containers.
               </p>
               <div className="pt-3 border-t border-platinum-300/20">
-                <span className="text-platinum-metallic text-sm font-medium hover:text-platinum-200 transition-colors inline-flex items-center gap-2">
+                <a
+                  href="https://www.plantdarbar.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-platinum-metallic text-sm font-medium hover:text-platinum-200 transition-colors inline-flex items-center gap-2 cursor-pointer"
+                >
                   Visit Website
-                  <ExternalLink className="w-4 h-4" />
-                </span>
+                </a>
               </div>
             </div>
-          </motion.a>
+          </motion.div>
 
           {/* SportTribe */}
-          <motion.a
-            href="https://sportstribenew.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -417,19 +414,22 @@ export default function Home() {
                 <h3 className="text-xl md:text-2xl font-luxury text-platinum-metallic">
                   SportTribe
                 </h3>
-                <ExternalLink className="w-4 h-4 text-platinum-metallic/50 group-hover:text-platinum-metallic transition-colors" />
               </div>
               <p className="text-platinum-200 text-xs md:text-sm leading-relaxed mb-3">
                 End-to-end sports management platform with comprehensive features for team management, scheduling, and analytics.
               </p>
               <div className="pt-3 border-t border-platinum-300/20">
-                <span className="text-platinum-metallic text-sm font-medium hover:text-platinum-200 transition-colors inline-flex items-center gap-2">
+                <a
+                  href="https://sportstribenew.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-platinum-metallic text-sm font-medium hover:text-platinum-200 transition-colors inline-flex items-center gap-2 cursor-pointer"
+                >
                   Visit Website
-                  <ExternalLink className="w-4 h-4" />
-                </span>
+                </a>
               </div>
             </div>
-          </motion.a>
+          </motion.div>
 
           {/* My Career Technology */}
           <motion.div
@@ -463,10 +463,7 @@ export default function Home() {
           </motion.div>
 
           {/* Political Analyst Portfolio */}
-          <motion.a
-            href="https://personal-portfolio-alpha-eight-59.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -491,19 +488,22 @@ export default function Home() {
                 <h3 className="text-xl md:text-2xl font-luxury text-platinum-metallic">
                   Political Analyst Portfolio
                 </h3>
-                <ExternalLink className="w-4 h-4 text-platinum-metallic/50 group-hover:text-platinum-metallic transition-colors" />
               </div>
               <p className="text-platinum-200 text-xs md:text-sm leading-relaxed mb-3">
                 Elegant professional portfolio showcasing political analysis work, research, and expertise.
               </p>
               <div className="pt-3 border-t border-platinum-300/20">
-                <span className="text-platinum-metallic text-sm font-medium hover:text-platinum-200 transition-colors inline-flex items-center gap-2">
+                <a
+                  href="https://personal-portfolio-alpha-eight-59.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-platinum-metallic text-sm font-medium hover:text-platinum-200 transition-colors inline-flex items-center gap-2 cursor-pointer"
+                >
                   Visit Website
-                  <ExternalLink className="w-4 h-4" />
-                </span>
+                </a>
               </div>
             </div>
-          </motion.a>
+          </motion.div>
 
           {/* NGO Platform */}
           <motion.div
@@ -537,10 +537,7 @@ export default function Home() {
           </motion.div>
 
           {/* Mithunam Wall Art */}
-          <motion.a
-            href="https://mithunam-sample.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -565,19 +562,22 @@ export default function Home() {
                 <h3 className="text-xl md:text-2xl font-luxury text-platinum-metallic">
                   Mithunam Wall Art
                 </h3>
-                <ExternalLink className="w-4 h-4 text-platinum-metallic/50 group-hover:text-platinum-metallic transition-colors" />
               </div>
               <p className="text-platinum-200 text-xs md:text-sm leading-relaxed mb-3">
                 Stunning portfolio website for an interior designer specializing in wall art and creative designs.
               </p>
               <div className="pt-3 border-t border-platinum-300/20">
-                <span className="text-platinum-metallic text-sm font-medium hover:text-platinum-200 transition-colors inline-flex items-center gap-2">
+                <a
+                  href="https://mithunam-sample.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-platinum-metallic text-sm font-medium hover:text-platinum-200 transition-colors inline-flex items-center gap-2 cursor-pointer"
+                >
                   Visit Website
-                  <ExternalLink className="w-4 h-4" />
-                </span>
+                </a>
               </div>
             </div>
-          </motion.a>
+          </motion.div>
         </div>
 
         <motion.div
@@ -615,14 +615,13 @@ export default function Home() {
           </p>
         </motion.div>
 
-        <div className="space-y-12">
+        <div className="space-y-16 md:space-y-20">
           {/* Directors Row - Centered */}
-          <div className="flex justify-center gap-8">
+          <div className="flex justify-center gap-12 md:gap-16">
             {[
-              { name: 'Director 1', role: 'Director', icon: User },
-              { name: 'Director 2', role: 'Director', icon: User },
+              { name: 'Sundarapalli Satheesh', role: 'Director', image: '/images/team/director-1.jpeg' },
+              { name: 'Sundarapalli Suneetha', role: 'Director', image: '/images/team/Director-2.jpeg' },
             ].map((member, i) => {
-              const Icon = member.icon
               return (
                 <motion.div
                   key={i}
@@ -630,15 +629,28 @@ export default function Home() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: i * 0.1 }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  className="glass-morphism rounded-xl p-8 text-center premium-hover w-full max-w-sm"
+                  whileHover={{ scale: 1.05 }}
+                  className="text-center w-full max-w-xs"
                 >
-                  <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-platinum-metallic/15 border-2 border-platinum-300/60 flex items-center justify-center overflow-hidden">
-                    <Icon className="w-16 h-16 text-platinum-metallic/50" />
+                  <div className="w-40 h-40 md:w-48 md:h-48 mx-auto mb-6 rounded-full overflow-hidden relative ring-2 ring-platinum-metallic/20 hover:ring-platinum-metallic/40 transition-all duration-300">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      width={192}
+                      height={192}
+                      className="w-full h-full object-cover"
+                      style={i === 1 ? { objectPosition: '50% 20%' } : undefined}
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none'
+                        const fallback = e.currentTarget.parentElement?.querySelector('.fallback-icon')
+                        if (fallback) fallback.classList.remove('hidden')
+                      }}
+                    />
+                    <User className="w-20 h-20 text-platinum-metallic/50 fallback-icon hidden absolute inset-0 m-auto" />
                   </div>
-                  <h3 className="text-2xl font-luxury text-platinum-metallic mb-2">{member.name}</h3>
-                  <p className="text-platinum-200 text-sm mb-4">{member.role}</p>
-                  <p className="text-platinum-300 text-sm leading-relaxed">
+                  <h3 className="text-2xl md:text-3xl font-luxury text-platinum-metallic mb-2">{member.name}</h3>
+                  <p className="text-platinum-200 text-sm md:text-base mb-3">{member.role}</p>
+                  <p className="text-platinum-300 text-sm md:text-base leading-relaxed">
                     Strategic leadership and vision for company growth
                   </p>
                 </motion.div>
@@ -647,11 +659,11 @@ export default function Home() {
           </div>
 
           {/* Founder, Legal Advisor, Head of Product Development Row */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16">
             {[
-              { name: 'Founder and CEO', role: 'Founder and CEO', icon: Users },
-              { name: 'Legal Advisor', role: 'Legal Advisor', icon: Scale },
-              { name: 'Head of Product Development', role: 'Head of Product Development', icon: Wrench },
+              { name: 'Hanish Venkat', role: 'Founder and CEO', image: '/images/team/founder-ceo.jpeg', icon: Users },
+              { name: 'Tharun', role: 'Legal Advisor', image: '/images/team/legal-advisor.jpeg', icon: Scale },
+              { name: 'Gandham Prakash', role: 'Head of Product Development', image: '/images/team/head-product.jpeg', icon: Wrench },
             ].map((member, i) => {
               const Icon = member.icon
               return (
@@ -661,15 +673,34 @@ export default function Home() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: (i + 2) * 0.1 }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  className="glass-morphism rounded-xl p-8 text-center premium-hover"
+                  whileHover={{ scale: 1.05 }}
+                  className="text-center"
                 >
-                  <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-platinum-metallic/15 border-2 border-platinum-300/60 flex items-center justify-center overflow-hidden">
-                    <Icon className="w-16 h-16 text-platinum-metallic/50" />
+                  <div className="w-40 h-40 md:w-48 md:h-48 mx-auto mb-6 rounded-full overflow-hidden relative ring-2 ring-platinum-metallic/20 hover:ring-platinum-metallic/40 transition-all duration-300 bg-platinum-metallic/5">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      width={192}
+                      height={192}
+                      className="w-full h-full object-cover"
+                      style={
+                        member.role === 'Head of Product Development' 
+                          ? { objectPosition: '50% 22%' } 
+                          : member.role === 'Legal Advisor'
+                          ? { objectPosition: '50% 25%' }
+                          : { objectPosition: '50% 30%' }
+                      }
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none'
+                        const fallback = e.currentTarget.parentElement?.querySelector('.fallback-icon')
+                        if (fallback) fallback.classList.remove('hidden')
+                      }}
+                    />
+                    <Icon className="w-20 h-20 text-platinum-metallic/50 fallback-icon hidden absolute inset-0 m-auto" />
                   </div>
-                  <h3 className="text-2xl font-luxury text-platinum-metallic mb-2">{member.name}</h3>
-                  <p className="text-platinum-200 text-sm mb-4">{member.role}</p>
-                  <p className="text-platinum-300 text-sm leading-relaxed">
+                  <h3 className="text-2xl md:text-3xl font-luxury text-platinum-metallic mb-2">{member.name}</h3>
+                  <p className="text-platinum-200 text-sm md:text-base mb-3">{member.role}</p>
+                  <p className="text-platinum-300 text-sm md:text-base leading-relaxed">
                     {member.role === 'Founder and CEO' && 'Visionary leader driving innovation and excellence'}
                     {member.role === 'Legal Advisor' && 'Expert legal guidance and compliance management'}
                     {member.role === 'Head of Product Development' && 'Leading product innovation and development'}
