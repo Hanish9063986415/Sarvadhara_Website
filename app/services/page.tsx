@@ -35,6 +35,7 @@ const portfolioItems = [
     category: 'E-Commerce Website',
     description: 'Beautiful plant e-commerce platform featuring sustainable indoor and balcony plants in upcycled containers. Complete online shopping experience with product catalog, services, and plant care information.',
     icon: Sprout,
+    image: '/Our works/Plant Darbur.jpeg',
     link: 'https://www.plantdarbar.com/',
     featured: true,
   },
@@ -43,6 +44,7 @@ const portfolioItems = [
     category: 'Sports Management Web App',
     description: 'End-to-end sports management platform with comprehensive features for team management, scheduling, player tracking, and analytics.',
     icon: Trophy,
+    image: '/Our works/Sports Tribe.jpeg',
     link: 'https://sportstribenew.vercel.app/',
     featured: false,
   },
@@ -51,6 +53,7 @@ const portfolioItems = [
     category: 'Learning Management System',
     description: 'Enterprise-level learning management system designed for comprehensive educational management, course delivery, and student tracking.',
     icon: GraduationCap,
+    image: '/Our works/My career Technologies.jpeg',
     link: null,
     featured: false,
   },
@@ -59,6 +62,7 @@ const portfolioItems = [
     category: 'Professional Portfolio',
     description: 'Elegant and professional portfolio website showcasing political analysis work, research, publications, and expertise in a sophisticated design.',
     icon: Briefcase,
+    image: '/Our works/Political Analyst.jpeg',
     link: 'https://personal-portfolio-alpha-eight-59.vercel.app/',
     featured: false,
   },
@@ -67,6 +71,7 @@ const portfolioItems = [
     category: 'NGO Website & Management System',
     description: 'Comprehensive NGO website featuring management system, donation portal, project exploration, and complete organizational transparency.',
     icon: Heart,
+    image: '/Our works/sandhanika.jpeg',
     link: null,
     featured: false,
   },
@@ -75,6 +80,7 @@ const portfolioItems = [
     category: 'Creative Portfolio Website',
     description: 'Stunning portfolio website for an interior designer specializing in wall art, showcasing creative works and design services.',
     icon: Palette,
+    image: '/Our works/Mithunam.jpeg',
     link: 'https://mithunam-sample.vercel.app/',
     featured: false,
   },
@@ -131,38 +137,38 @@ export default function Services() {
   return (
     <main className="min-h-screen bg-luxury-black pt-20">
       {/* Hero Section */}
-      <section className="py-32 px-6 text-center">
+      <section className="py-24 sm:py-28 md:py-32 px-4 sm:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-6xl md:text-7xl font-luxury text-platinum-metallic mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-luxury text-platinum-metallic mb-4 sm:mb-6 px-2">
             Services & Client Works
           </h1>
-          <div className="w-24 h-0.5 bg-platinum-metallic mx-auto mb-8" />
-          <p className="text-xl text-platinum-200 max-w-2xl mx-auto">
+          <div className="w-24 h-0.5 bg-platinum-metallic mx-auto mb-6 sm:mb-8" />
+          <p className="text-base sm:text-lg md:text-xl text-platinum-200 max-w-2xl mx-auto px-4">
             Premium technology solutions crafted with precision and excellence
           </p>
         </motion.div>
       </section>
 
       {/* Software Services */}
-      <section className="py-20 px-6 max-w-7xl mx-auto">
+      <section className="py-16 sm:py-20 px-4 sm:px-6 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-luxury text-platinum-metallic mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-luxury text-platinum-metallic mb-4 sm:mb-6 px-2">
             Software Services
           </h2>
           <div className="w-24 h-0.5 bg-platinum-metallic mx-auto" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {services.map((service, index) => {
             const Icon = service.icon
             return (
@@ -215,35 +221,28 @@ export default function Services() {
             
             const cardContent = (
               <>
-                {item.link ? (
-                  <div className={`h-48 md:h-56 bg-gradient-to-br ${isFeatured ? 'from-green-900/30 via-platinum-900/20 to-luxury-black' : 'from-platinum-900/20 to-luxury-black'} relative overflow-hidden ${isFeatured ? 'group-hover:from-green-900/40' : 'group-hover:from-platinum-900/30'} transition-all duration-300`}>
-                    {/* Website Preview - Using iframe for live preview */}
-                    <div className="absolute inset-0 w-full h-full">
-                      <iframe
-                        src={item.link}
-                        className="w-full h-full border-0 scale-75 origin-top-left"
-                        style={{ width: '133.33%', height: '133.33%' }}
-                        title={`${item.title} Homepage Preview`}
-                        loading="lazy"
-                        sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-                        allow="fullscreen"
-                        referrerPolicy="no-referrer-when-downgrade"
+                <div className={`h-48 md:h-56 bg-gradient-to-br ${isFeatured ? 'from-green-900/30 via-platinum-900/20 to-luxury-black' : 'from-platinum-900/20 to-luxury-black'} relative overflow-hidden ${isFeatured ? 'group-hover:from-green-900/40' : 'group-hover:from-platinum-900/30'} transition-all duration-300`}>
+                  {item.image ? (
+                    <>
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       {/* Overlay gradient for better visual integration */}
                       <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/10 via-transparent to-luxury-black/30 pointer-events-none" />
+                    </>
+                  ) : (
+                    <IconComponent className={`w-12 h-12 md:w-14 md:h-14 text-platinum-metallic/30 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:scale-110 transition-transform duration-300`} />
+                  )}
+                  {/* Featured Badge */}
+                  {isFeatured && (
+                    <div className="absolute top-4 right-4 bg-green-500/20 border border-green-400/40 px-3 py-1 rounded-full backdrop-blur-sm z-10">
+                      <span className="text-green-300 text-xs font-medium">Featured</span>
                     </div>
-                    {/* Featured Badge */}
-                    {isFeatured && (
-                      <div className="absolute top-4 right-4 bg-green-500/20 border border-green-400/40 px-3 py-1 rounded-full backdrop-blur-sm z-10">
-                        <span className="text-green-300 text-xs font-medium">Featured</span>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div className={`h-36 md:h-40 bg-gradient-to-br from-platinum-900/20 to-luxury-black flex items-center justify-center relative overflow-hidden group-hover:from-platinum-900/30 transition-all duration-300`}>
-                    <IconComponent className={`w-12 h-12 md:w-14 md:h-14 text-platinum-metallic/30 group-hover:scale-110 transition-transform duration-300`} />
-                  </div>
-                )}
+                  )}
+                </div>
                 <div className="p-4 md:p-5">
                   <span className="text-xs text-platinum-500 uppercase tracking-wider mb-1.5 block">
                     {item.category}
@@ -384,7 +383,19 @@ export default function Services() {
           <div className="overflow-hidden py-8">
             <div className="marquee-container flex gap-8 md:gap-12 lg:gap-16">
               {/* First set of logos */}
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
+              {[
+                { name: 'BUILD', src: '/Clients/BUILD.jpeg' },
+                { name: 'Greenko', src: '/Clients/greenko.jpeg' },
+                { name: 'IIT Madras', src: '/Clients/iit madras.jpeg' },
+                { name: 'IIT Ropar', src: '/Clients/iit roopar.jpeg' },
+                { name: 'ITIC IIT Hyderabad', src: '/Clients/ITIC IIT HYDERABAD.jpeg' },
+                { name: 'My Career Technologies', src: '/Clients/my carrer technologies.jpeg' },
+                { name: 'Plant Darbar', src: '/Clients/Plant Darbur.jpeg' },
+                { name: 'Sadhanika', src: '/Clients/Sadhanika.jpeg' },
+                { name: 'School of Startups', src: '/Clients/School of Startups.jpeg' },
+                { name: 'Sportstribe', src: '/Clients/Sportstribe.jpeg' },
+                { name: 'Vishva', src: '/Clients/Vishva.jpeg' },
+              ].map((client, index) => (
                 <motion.div
                   key={`first-${index}`}
                   className="flex-shrink-0 glass-morphism rounded-xl p-6 md:p-8 premium-hover flex items-center justify-center w-48 md:w-56 lg:w-64 h-32 md:h-40 lg:h-48 group relative"
@@ -393,27 +404,31 @@ export default function Services() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-platinum-metallic/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="w-full h-full flex items-center justify-center relative z-10">
-                    {/* Placeholder - Replace with actual client logos */}
-                    <div className="w-full h-full flex items-center justify-center border border-platinum-300/20 rounded-lg group-hover:border-platinum-metallic/40 transition-colors duration-300">
-                      <div className="text-platinum-300/30 group-hover:text-platinum-metallic/50 text-xs md:text-sm font-light text-center px-2 transition-colors duration-300">
-                        Client {index}
-                      </div>
-                    </div>
-                    {/* Example: Uncomment and replace with actual logo paths
                     <Image
-                      src={`/images/clients/client-${index}.png`}
-                      alt={`Client ${index}`}
-                      width={200}
-                      height={150}
+                      src={client.src}
+                      alt={client.name}
+                      width={250}
+                      height={180}
                       className="object-contain w-full h-full opacity-70 group-hover:opacity-100 transition-all duration-300 filter group-hover:brightness-110"
                     />
-                    */}
                   </div>
                 </motion.div>
               ))}
               
               {/* Duplicate set for seamless infinite loop */}
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
+              {[
+                { name: 'BUILD', src: '/Clients/BUILD.jpeg' },
+                { name: 'Greenko', src: '/Clients/greenko.jpeg' },
+                { name: 'IIT Madras', src: '/Clients/iit madras.jpeg' },
+                { name: 'IIT Ropar', src: '/Clients/iit roopar.jpeg' },
+                { name: 'ITIC IIT Hyderabad', src: '/Clients/ITIC IIT HYDERABAD.jpeg' },
+                { name: 'My Career Technologies', src: '/Clients/my carrer technologies.jpeg' },
+                { name: 'Plant Darbar', src: '/Clients/Plant Darbur.jpeg' },
+                { name: 'Sadhanika', src: '/Clients/Sadhanika.jpeg' },
+                { name: 'School of Startups', src: '/Clients/School of Startups.jpeg' },
+                { name: 'Sportstribe', src: '/Clients/Sportstribe.jpeg' },
+                { name: 'Vishva', src: '/Clients/Vishva.jpeg' },
+              ].map((client, index) => (
                 <motion.div
                   key={`second-${index}`}
                   className="flex-shrink-0 glass-morphism rounded-xl p-6 md:p-8 premium-hover flex items-center justify-center w-48 md:w-56 lg:w-64 h-32 md:h-40 lg:h-48 group relative"
@@ -422,21 +437,13 @@ export default function Services() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-platinum-metallic/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="w-full h-full flex items-center justify-center relative z-10">
-                    {/* Placeholder - Replace with actual client logos */}
-                    <div className="w-full h-full flex items-center justify-center border border-platinum-300/20 rounded-lg group-hover:border-platinum-metallic/40 transition-colors duration-300">
-                      <div className="text-platinum-300/30 group-hover:text-platinum-metallic/50 text-xs md:text-sm font-light text-center px-2 transition-colors duration-300">
-                        Client {index}
-                      </div>
-                    </div>
-                    {/* Example: Uncomment and replace with actual logo paths
                     <Image
-                      src={`/images/clients/client-${index}.png`}
-                      alt={`Client ${index}`}
-                      width={200}
-                      height={150}
+                      src={client.src}
+                      alt={client.name}
+                      width={250}
+                      height={180}
                       className="object-contain w-full h-full opacity-70 group-hover:opacity-100 transition-all duration-300 filter group-hover:brightness-110"
                     />
-                    */}
                   </div>
                 </motion.div>
               ))}
