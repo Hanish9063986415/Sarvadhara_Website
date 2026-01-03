@@ -14,32 +14,32 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-luxury-black via-luxury-black to-luxury-black" />
 
         {/* Elegant Corner Accents */}
-        <div className="absolute top-0 left-0 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 border-t-2 border-l-2 border-platinum-metallic/10" />
-        <div className="absolute top-0 right-0 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 border-t-2 border-r-2 border-platinum-metallic/10" />
-        <div className="absolute bottom-0 left-0 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 border-b-2 border-l-2 border-platinum-metallic/10" />
-        <div className="absolute bottom-0 right-0 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 border-b-2 border-r-2 border-platinum-metallic/10" />
+        <div className="absolute top-0 left-0 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 border-l-2 border-platinum-metallic/10" />
+        <div className="absolute top-0 right-0 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 border-r-2 border-platinum-metallic/10" />
+        <div className="absolute bottom-0 left-0 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 border-l-2 border-platinum-metallic/10" />
+        <div className="absolute bottom-0 right-0 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 border-r-2 border-platinum-metallic/10" />
 
         {/* Content Layout */}
         <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-          <div className="flex items-center justify-center min-h-screen py-20 md:py-32">
+          <div className="flex items-center justify-center min-h-screen py-24 sm:py-28 md:py-32">
             
             {/* Content */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex flex-col items-center text-center max-w-5xl space-y-6 md:space-y-8"
+              className="flex flex-col items-center text-center max-w-5xl space-y-4 sm:space-y-6 md:space-y-8"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="space-y-2 md:space-y-3"
+                className="space-y-1 sm:space-y-2 md:space-y-3 px-2"
               >
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold text-platinum-metallic uppercase leading-[0.95] tracking-tight">
+                <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold text-platinum-metallic uppercase leading-[0.95] tracking-tight">
                   WE BUILD WHAT
                 </h1>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-display font-bold text-platinum-metallic uppercase leading-[0.95] tracking-tight">
+                <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-display font-bold text-platinum-metallic uppercase leading-[0.95] tracking-tight">
                   THE FUTURE RUNS ON
                 </h1>
               </motion.div>
@@ -353,21 +353,14 @@ export default function Home() {
             className="glass-morphism rounded-xl overflow-hidden premium-hover group block ring-2 ring-green-400/30"
           >
             <div className="h-48 md:h-56 bg-gradient-to-br from-green-900/30 via-platinum-900/20 to-luxury-black relative overflow-hidden group-hover:from-green-900/40 transition-all duration-300">
-              {/* Website Preview - Using iframe for live preview */}
-              <div className="absolute inset-0 w-full h-full">
-                <iframe
-                  src="https://www.plantdarbar.com/"
-                  className="w-full h-full border-0 scale-75 origin-top-left"
-                  style={{ width: '133.33%', height: '133.33%' }}
-                  title="Plant Darbar Homepage Preview"
-                  loading="lazy"
-                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-                  allow="fullscreen"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-                {/* Overlay gradient for better visual integration */}
-                <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/10 via-transparent to-luxury-black/30 pointer-events-none" />
-              </div>
+              <Image
+                src="/Our works/Plant Darbur.jpeg"
+                alt="Plant Darbar"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              {/* Overlay gradient for better visual integration */}
+              <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/10 via-transparent to-luxury-black/30 pointer-events-none" />
               {/* Featured Badge */}
               <div className="absolute top-4 right-4 bg-green-500/20 border border-green-400/40 px-3 py-1 rounded-full backdrop-blur-sm z-10">
                 <span className="text-green-300 text-xs font-medium">Featured</span>
@@ -408,20 +401,13 @@ export default function Home() {
             className="glass-morphism rounded-xl overflow-hidden premium-hover group block"
           >
             <div className="h-48 md:h-56 bg-gradient-to-br from-platinum-900/20 to-luxury-black relative overflow-hidden group-hover:from-platinum-900/30 transition-all duration-300">
-              {/* Website Preview */}
-              <div className="absolute inset-0 w-full h-full">
-                <iframe
-                  src="https://sportstribenew.vercel.app/"
-                  className="w-full h-full border-0 scale-75 origin-top-left"
-                  style={{ width: '133.33%', height: '133.33%' }}
-                  title="SportTribe Homepage Preview"
-                  loading="lazy"
-                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-                  allow="fullscreen"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/10 via-transparent to-luxury-black/30 pointer-events-none" />
-              </div>
+              <Image
+                src="/Our works/Sports Tribe.jpeg"
+                alt="SportTribe"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/10 via-transparent to-luxury-black/30 pointer-events-none" />
             </div>
             <div className="p-4 md:p-5">
               <span className="text-xs text-platinum-500 uppercase tracking-wider mb-1.5 block">
@@ -454,8 +440,14 @@ export default function Home() {
             whileHover={{ y: -10, scale: 1.02 }}
             className="glass-morphism rounded-xl overflow-hidden premium-hover group"
           >
-            <div className="h-36 md:h-40 bg-gradient-to-br from-platinum-900/20 to-luxury-black flex items-center justify-center group-hover:from-platinum-900/30 transition-all duration-300">
-              <GraduationCap className="w-12 h-12 md:w-14 md:h-14 text-platinum-metallic/30 group-hover:scale-110 transition-transform duration-300" />
+            <div className="h-48 md:h-56 bg-gradient-to-br from-platinum-900/20 to-luxury-black relative overflow-hidden group-hover:from-platinum-900/30 transition-all duration-300">
+              <Image
+                src="/Our works/My career Technologies.jpeg"
+                alt="My Career Technology"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/10 via-transparent to-luxury-black/30 pointer-events-none" />
             </div>
             <div className="p-6">
               <span className="text-xs text-platinum-500 uppercase tracking-wider mb-1.5 block">
@@ -483,20 +475,13 @@ export default function Home() {
             className="glass-morphism rounded-xl overflow-hidden premium-hover group block"
           >
             <div className="h-48 md:h-56 bg-gradient-to-br from-platinum-900/20 to-luxury-black relative overflow-hidden group-hover:from-platinum-900/30 transition-all duration-300">
-              {/* Website Preview */}
-              <div className="absolute inset-0 w-full h-full">
-                <iframe
-                  src="https://personal-portfolio-alpha-eight-59.vercel.app/"
-                  className="w-full h-full border-0 scale-75 origin-top-left"
-                  style={{ width: '133.33%', height: '133.33%' }}
-                  title="Political Analyst Portfolio Homepage Preview"
-                  loading="lazy"
-                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-                  allow="fullscreen"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/10 via-transparent to-luxury-black/30 pointer-events-none" />
-              </div>
+              <Image
+                src="/Our works/Political Analyst.jpeg"
+                alt="Political Analyst Portfolio"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/10 via-transparent to-luxury-black/30 pointer-events-none" />
             </div>
             <div className="p-4 md:p-5">
               <span className="text-xs text-platinum-500 uppercase tracking-wider mb-1.5 block">
@@ -529,8 +514,14 @@ export default function Home() {
             whileHover={{ y: -10, scale: 1.02 }}
             className="glass-morphism rounded-xl overflow-hidden premium-hover group"
           >
-            <div className="h-36 md:h-40 bg-gradient-to-br from-platinum-900/20 to-luxury-black flex items-center justify-center group-hover:from-platinum-900/30 transition-all duration-300">
-              <Heart className="w-12 h-12 md:w-14 md:h-14 text-platinum-metallic/30 group-hover:scale-110 transition-transform duration-300" />
+            <div className="h-48 md:h-56 bg-gradient-to-br from-platinum-900/20 to-luxury-black relative overflow-hidden group-hover:from-platinum-900/30 transition-all duration-300">
+              <Image
+                src="/Our works/sandhanika.jpeg"
+                alt="NGO Platform"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/10 via-transparent to-luxury-black/30 pointer-events-none" />
             </div>
             <div className="p-6">
               <span className="text-xs text-platinum-500 uppercase tracking-wider mb-1.5 block">
@@ -558,20 +549,13 @@ export default function Home() {
             className="glass-morphism rounded-xl overflow-hidden premium-hover group block"
           >
             <div className="h-48 md:h-56 bg-gradient-to-br from-platinum-900/20 to-luxury-black relative overflow-hidden group-hover:from-platinum-900/30 transition-all duration-300">
-              {/* Website Preview */}
-              <div className="absolute inset-0 w-full h-full">
-                <iframe
-                  src="https://mithunam-sample.vercel.app/"
-                  className="w-full h-full border-0 scale-75 origin-top-left"
-                  style={{ width: '133.33%', height: '133.33%' }}
-                  title="Mithunam Wall Art Homepage Preview"
-                  loading="lazy"
-                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-                  allow="fullscreen"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/10 via-transparent to-luxury-black/30 pointer-events-none" />
-              </div>
+              <Image
+                src="/Our works/Mithunam.jpeg"
+                alt="Mithunam Wall Art"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/10 via-transparent to-luxury-black/30 pointer-events-none" />
             </div>
             <div className="p-4 md:p-5">
               <span className="text-xs text-platinum-500 uppercase tracking-wider mb-1.5 block">

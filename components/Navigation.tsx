@@ -23,20 +23,20 @@ export default function Navigation() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 2.8, ease: 'easeOut' }}
-      className="fixed top-0 left-0 right-0 z-50 glass-morphism border-b-2 border-platinum-300/40"
+      className="fixed top-0 left-0 right-0 z-50 glass-morphism-navbar"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="relative flex items-center h-24 md:h-28">
+      <div className="max-w-7xl mx-auto px-0 sm:px-4 md:px-6 lg:px-8">
+        <div className="relative flex items-center justify-between h-24 md:h-28">
           {/* Logo - Left Aligned */}
-          <Link href="/" className="flex items-center group z-10 h-full -ml-2 md:-ml-4">
+          <Link href="/" className="flex items-center group z-10 h-full -ml-2 sm:ml-0 md:-ml-2 lg:-ml-4">
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="flex items-center"
             >
               <Logo 
                 size={600} 
-                className="text-platinum-metallic w-auto h-28 md:h-32 max-h-32" 
-                src="/images/logo.png"
+                className="text-platinum-metallic w-auto h-20 md:h-28 lg:h-32 max-h-32" 
+                src="/logo/logo.png"
                 alt="Sarvadhara Tech Innovations Logo"
               />
             </motion.div>
@@ -94,7 +94,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-platinum-200 hover:text-platinum-metallic transition-colors z-10 ml-auto"
+            className="md:hidden text-platinum-200 hover:text-platinum-metallic transition-colors z-10 ml-auto mr-3 sm:mr-0 -mt-1"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
