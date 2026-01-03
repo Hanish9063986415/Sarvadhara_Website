@@ -10,36 +10,36 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-luxury-black">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-luxury-black via-luxury-black to-luxury-black" />
 
         {/* Elegant Corner Accents */}
-        <div className="absolute top-0 left-0 w-64 h-64 border-t-2 border-l-2 border-platinum-metallic/10" />
-        <div className="absolute top-0 right-0 w-64 h-64 border-t-2 border-r-2 border-platinum-metallic/10" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 border-b-2 border-l-2 border-platinum-metallic/10" />
-        <div className="absolute bottom-0 right-0 w-64 h-64 border-b-2 border-r-2 border-platinum-metallic/10" />
+        <div className="absolute top-0 left-0 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 border-t-2 border-l-2 border-platinum-metallic/10" />
+        <div className="absolute top-0 right-0 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 border-t-2 border-r-2 border-platinum-metallic/10" />
+        <div className="absolute bottom-0 left-0 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 border-b-2 border-l-2 border-platinum-metallic/10" />
+        <div className="absolute bottom-0 right-0 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 border-b-2 border-r-2 border-platinum-metallic/10" />
 
         {/* Content Layout */}
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-end justify-start min-h-screen pt-40 md:pt-52 lg:pt-64 pb-32 md:pb-40">
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+          <div className="flex items-center justify-center min-h-screen py-20 md:py-32">
             
             {/* Content */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex flex-col justify-end space-y-8 text-left max-w-5xl mb-16 md:mb-24"
+              className="flex flex-col items-center text-center max-w-5xl space-y-6 md:space-y-8"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="space-y-2"
+                className="space-y-2 md:space-y-3"
               >
-                <h1 className="text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-display font-bold text-platinum-metallic uppercase leading-[0.95] tracking-tight">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold text-platinum-metallic uppercase leading-[0.95] tracking-tight">
                   WE BUILD WHAT
                 </h1>
-                <h1 className="text-3xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-display font-bold text-platinum-metallic uppercase leading-[0.95] tracking-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-display font-bold text-platinum-metallic uppercase leading-[0.95] tracking-tight">
                   THE FUTURE RUNS ON
                 </h1>
               </motion.div>
@@ -48,7 +48,7 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.6 }}
-                className="text-sm md:text-base lg:text-base text-platinum-200 font-light tracking-normal leading-relaxed max-w-2xl mt-8"
+                className="text-sm sm:text-base md:text-lg lg:text-xl text-platinum-200 font-light tracking-normal leading-relaxed max-w-2xl md:max-w-3xl px-4 md:px-0"
               >
                 Sarvadhara Tech Innovations was founded under the belief that a future where businesses are empowered with cutting-edge, high-tech solutions is fundamentally more exciting than one where they are not.
               </motion.p>
@@ -57,22 +57,75 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
-                className="flex flex-col sm:flex-row gap-4 justify-start items-center pt-6"
+                className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 justify-center items-stretch sm:items-center pt-6 md:pt-8 w-full sm:w-auto px-4 sm:px-0"
               >
-                <Link
-                  href="/services"
-                  className="group inline-flex items-center justify-center px-6 py-3 border border-platinum-metallic text-platinum-metallic font-normal text-sm uppercase tracking-wider hover:bg-platinum-metallic hover:text-luxury-black transition-all duration-300"
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
-                  EXPLORE
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link
-                  href="/product"
-                  className="group inline-flex items-center justify-center px-6 py-3 border border-platinum-metallic text-platinum-metallic font-normal text-sm uppercase tracking-wider hover:bg-platinum-metallic hover:text-luxury-black transition-all duration-300"
+                  <Link
+                    href="/services"
+                    className="group relative inline-flex items-center justify-center px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 w-full sm:w-auto min-w-[120px] sm:min-w-[130px] rounded-full overflow-hidden backdrop-blur-md"
+                  >
+                    {/* Elegant gradient background */}
+                    <span className="absolute inset-0 bg-gradient-to-br from-platinum-metallic/5 via-platinum-metallic/10 to-platinum-metallic/5 rounded-full group-hover:from-platinum-metallic/15 group-hover:via-platinum-metallic/20 group-hover:to-platinum-metallic/15 transition-all duration-500" />
+                    
+                    {/* Subtle border with rounded corners */}
+                    <span className="absolute inset-0 rounded-full border border-platinum-metallic/30 group-hover:border-platinum-metallic/70 transition-all duration-300" />
+                    
+                    {/* Outer glow effect */}
+                    <span className="absolute inset-0 rounded-full border border-platinum-metallic/10 group-hover:border-platinum-metallic/30 blur-xl transition-all duration-300 -z-10" />
+                    
+                    {/* Inner shadow for depth */}
+                    <span className="absolute inset-0 rounded-full shadow-inner shadow-black/20 group-hover:shadow-black/30 transition-all duration-300" />
+                    
+                    {/* Text with elegant styling */}
+                    <span className="relative z-10 text-platinum-metallic font-medium text-xs sm:text-xs md:text-sm uppercase tracking-wider group-hover:tracking-widest transition-all duration-300">
+                      EXPLORE
+                    </span>
+                    
+                    {/* Arrow icon with smooth animation */}
+                    <ArrowRight className="relative z-10 ml-1.5 w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-platinum-metallic group-hover:translate-x-1.5 transition-transform duration-300" />
+                    
+                    {/* Elegant shine sweep */}
+                    <span className="absolute inset-0 rounded-full -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                  </Link>
+                </motion.div>
+                
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
-                  DISCOVER SAAMRAS
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
+                  <Link
+                    href="/product"
+                    className="group relative inline-flex items-center justify-center px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 w-full sm:w-auto min-w-[150px] sm:min-w-[160px] rounded-full overflow-hidden backdrop-blur-md"
+                  >
+                    {/* Rich gradient background for primary button */}
+                    <span className="absolute inset-0 bg-gradient-to-br from-platinum-metallic/15 via-platinum-metallic/25 to-platinum-metallic/15 rounded-full group-hover:from-platinum-metallic/25 group-hover:via-platinum-metallic/35 group-hover:to-platinum-metallic/25 transition-all duration-500" />
+                    
+                    {/* Prominent border with glow */}
+                    <span className="absolute inset-0 rounded-full border-2 border-platinum-metallic/50 group-hover:border-platinum-metallic shadow-[0_0_25px_rgba(255,255,255,0.15)] group-hover:shadow-[0_0_40px_rgba(255,255,255,0.25)] transition-all duration-300" />
+                    
+                    {/* Enhanced outer glow */}
+                    <span className="absolute inset-0 rounded-full border border-platinum-metallic/20 group-hover:border-platinum-metallic/40 blur-2xl transition-all duration-300 -z-10" />
+                    
+                    {/* Inner highlight for premium feel */}
+                    <span className="absolute inset-0 rounded-full bg-gradient-to-t from-transparent via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    
+                    {/* Text with premium styling */}
+                    <span className="relative z-10 text-platinum-metallic font-semibold text-xs sm:text-xs md:text-sm uppercase tracking-wider group-hover:tracking-widest transition-all duration-300">
+                      DISCOVER SAAMRAS
+                    </span>
+                    
+                    {/* Arrow icon with enhanced animation */}
+                    <ArrowRight className="relative z-10 ml-1.5 w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-platinum-metallic group-hover:translate-x-1.5 transition-transform duration-300" />
+                    
+                    {/* Premium shine sweep */}
+                    <span className="absolute inset-0 rounded-full -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                  </Link>
+                </motion.div>
               </motion.div>
             </motion.div>
 
