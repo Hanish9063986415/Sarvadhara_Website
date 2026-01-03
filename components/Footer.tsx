@@ -81,7 +81,7 @@ export default function Footer() {
                   href="tel:+919063986415" 
                   className="text-platinum-200 text-sm hover:text-platinum-metallic transition-colors"
                 >
-                  +91 9063986415
+                  +91 9063986415, +91 9392668228
                 </a>
               </li>
               <li className="flex items-start space-x-3">
