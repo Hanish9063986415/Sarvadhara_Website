@@ -459,6 +459,16 @@ export default function Home() {
               <p className="text-platinum-200 text-xs md:text-sm leading-relaxed">
                 Enterprise-level learning management system for comprehensive educational management and course delivery.
               </p>
+              <div className="pt-3 border-t border-platinum-300/20">
+                <a
+                  href="https://mycareerlms.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-platinum-metallic text-sm font-medium hover:text-platinum-200 transition-colors inline-flex items-center gap-2 cursor-pointer"
+                >
+                  Visit Website
+                </a>
+              </div>
             </div>
           </motion.div>
 
@@ -663,7 +673,7 @@ export default function Home() {
             {[
               { name: 'Hanish Venkat', role: 'Founder and CEO', image: '/images/team/founder-ceo.jpeg', icon: Users },
               { name: 'Tarun', role: 'Legal Advisor', image: '/images/team/legal-advisor.jpeg', icon: Scale },
-              { name: 'Prakash', role: 'Head of Product Development', image: '/images/team/Prakash.png', icon: Wrench },
+              { name: 'Gandham Prakash', role: 'Head of Product Development', image: '/images/team/Prakash.png', icon: Wrench },
             ].map((member, i) => {
               const Icon = member.icon
               return (
