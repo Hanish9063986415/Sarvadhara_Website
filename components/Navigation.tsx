@@ -11,6 +11,7 @@ const navItems = [
   { name: 'Home', path: '/' },
   { name: 'Services', path: '/services' },
   { name: 'SAAMRAS', path: '/product' },
+  { name: 'Donate', path: '/donate' },
   { name: 'Contact Us', path: '/services#contact' },
 ]
 
