@@ -5,6 +5,45 @@ import { ArrowDown, Code, Users, ArrowRight, Sprout, Trophy, GraduationCap, Brie
 import Shrimp from '@/components/Shrimp'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useEffect, useRef, useState } from 'react'
+
+function CountUpNumber({ end, suffix = '', prefix = '' }: { end: number; suffix?: string; prefix?: string }) {
+  const [count, setCount] = useState(0)
+  const ref = useRef<HTMLSpanElement>(null)
+  const started = useRef(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true
+          const duration = 1800
+          const steps = 60
+          const increment = end / steps
+          let current = 0
+          const interval = setInterval(() => {
+            current += increment
+            if (current >= end) {
+              setCount(end)
+              clearInterval(interval)
+            } else {
+              setCount(Math.floor(current))
+            }
+          }, duration / steps)
+        }
+      },
+      { threshold: 0.3 }
+    )
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [end])
+
+  return (
+    <span ref={ref}>
+      {prefix}{count}{suffix}
+    </span>
+  )
+}
 
 export default function Home() {
   return (
@@ -140,6 +179,54 @@ export default function Home() {
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30"
         >
           <ArrowDown className="w-6 h-6 text-platinum-200" />
+        </motion.div>
+      </section>
+
+      {/* Stats Bar */}
+      <section className="py-0 px-6 max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative glass-morphism rounded-2xl border border-platinum-metallic/20 overflow-hidden"
+        >
+          {/* Subtle top glow line */}
+          <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-platinum-metallic/40 to-transparent" />
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-platinum-metallic/15">
+            {[
+              { value: 10, suffix: '+', label: 'Projects Delivered', sub: 'Across diverse industries' },
+              { value: 11, suffix: '+', label: 'Happy Clients', sub: 'Businesses empowered' },
+              { value: 5,  suffix: '',  label: 'IIT Partnerships', sub: 'Madras · Ropar · Hyderabad' },
+              { value: 75, suffix: '',  prefix: 'TOP ', label: 'Startups in India', sub: 'BUILD Programme by IIT-H' },
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.12 }}
+                className="group flex flex-col items-center justify-center text-center py-10 px-6 hover:bg-platinum-metallic/5 transition-colors duration-300 relative"
+              >
+                {/* Hover accent dot */}
+                <div className="absolute top-4 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-platinum-metallic/0 group-hover:bg-platinum-metallic/60 transition-all duration-500" />
+
+                <p className="text-4xl sm:text-5xl font-display font-bold text-platinum-metallic tracking-tight mb-1 tabular-nums">
+                  <CountUpNumber end={stat.value} suffix={stat.suffix} prefix={stat.prefix ?? ''} />
+                </p>
+                <p className="text-sm sm:text-base font-medium text-platinum-200 uppercase tracking-widest mb-1">
+                  {stat.label}
+                </p>
+                <p className="text-xs text-platinum-500 tracking-wide">
+                  {stat.sub}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Subtle bottom glow line */}
+          <div className="absolute bottom-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-platinum-metallic/20 to-transparent" />
         </motion.div>
       </section>
 
