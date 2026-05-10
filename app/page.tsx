@@ -472,7 +472,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Political Analyst Portfolio */}
+          {/* Local Baazaar */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -481,10 +481,10 @@ export default function Home() {
             whileHover={{ y: -10, scale: 1.02 }}
             className="glass-morphism rounded-xl overflow-hidden premium-hover group block"
           >
-            <div className="h-48 md:h-56 bg-gradient-to-br from-platinum-900/20 to-luxury-black relative overflow-hidden group-hover:from-platinum-900/30 transition-all duration-300">
+            <div className="h-48 md:h-56 bg-gradient-to-br from-emerald-900/20 to-luxury-black relative overflow-hidden group-hover:from-emerald-900/30 transition-all duration-300">
               <Image
-                src="/Our works/Political Analyst.jpeg"
-                alt="Political Analyst Portfolio"
+                src="/Our works/LocalBaazaar.jpeg"
+                alt="Local Baazaar"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
@@ -492,19 +492,19 @@ export default function Home() {
             </div>
             <div className="p-4 md:p-5">
               <span className="text-xs text-platinum-500 uppercase tracking-wider mb-1.5 block">
-                Professional Portfolio
+                Hyperlocal E-Commerce Platform
               </span>
               <div className="flex items-center justify-between mb-1.5">
                 <h3 className="text-xl md:text-2xl font-luxury text-platinum-metallic">
-                  Political Analyst Portfolio
+                  Local Baazaar
                 </h3>
               </div>
               <p className="text-platinum-200 text-xs md:text-sm leading-relaxed mb-3">
-                Elegant professional portfolio showcasing political analysis work, research, and expertise.
+                Hyperlocal e-commerce platform connecting users with fresh products and services from local vendors, supporting community commerce.
               </p>
               <div className="pt-3 border-t border-platinum-300/20">
                 <a
-                  href="https://personal-portfolio-alpha-eight-59.vercel.app/"
+                  href="https://localbaazaar.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-platinum-metallic text-sm font-medium hover:text-platinum-200 transition-colors inline-flex items-center gap-2 cursor-pointer"
@@ -515,7 +515,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* NGO Platform */}
+          {/* Banking App */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -524,10 +524,10 @@ export default function Home() {
             whileHover={{ y: -10, scale: 1.02 }}
             className="glass-morphism rounded-xl overflow-hidden premium-hover group"
           >
-            <div className="h-48 md:h-56 bg-gradient-to-br from-platinum-900/20 to-luxury-black relative overflow-hidden group-hover:from-platinum-900/30 transition-all duration-300">
+            <div className="h-48 md:h-56 bg-gradient-to-br from-blue-900/20 to-luxury-black relative overflow-hidden group-hover:from-blue-900/30 transition-all duration-300">
               <Image
-                src="/Our works/sandhanika.jpeg"
-                alt="NGO Platform"
+                src="/Our works/ElevateIQ.jpeg"
+                alt="Banking App"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
@@ -535,18 +535,28 @@ export default function Home() {
             </div>
             <div className="p-6">
               <span className="text-xs text-platinum-500 uppercase tracking-wider mb-1.5 block">
-                NGO Website & Management System
+                Banking &amp; Finance Web App
               </span>
               <h3 className="text-xl md:text-2xl font-luxury text-platinum-metallic mb-1.5">
-                NGO Platform
+                Banking App
               </h3>
               <p className="text-platinum-200 text-xs md:text-sm leading-relaxed">
-                Comprehensive NGO website with management system, donation portal, and project exploration.
+                Modern banking web application with a clean, user-friendly interface for managing finances, transactions, and account services.
               </p>
+              <div className="pt-3 border-t border-platinum-300/20">
+                <a
+                  href="https://banking-app-five-iota.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-platinum-metallic text-sm font-medium hover:text-platinum-200 transition-colors inline-flex items-center gap-2 cursor-pointer"
+                >
+                  Visit Website
+                </a>
+              </div>
             </div>
           </motion.div>
 
-          {/* Mithunam Wall Art */}
+          {/* Goud Saab */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -555,10 +565,10 @@ export default function Home() {
             whileHover={{ y: -10, scale: 1.02 }}
             className="glass-morphism rounded-xl overflow-hidden premium-hover group block"
           >
-            <div className="h-48 md:h-56 bg-gradient-to-br from-platinum-900/20 to-luxury-black relative overflow-hidden group-hover:from-platinum-900/30 transition-all duration-300">
+            <div className="h-48 md:h-56 bg-gradient-to-br from-amber-900/20 to-luxury-black relative overflow-hidden group-hover:from-amber-900/30 transition-all duration-300">
               <Image
-                src="/Our works/Mithunam.jpeg"
-                alt="Mithunam Wall Art"
+                src="/Our works/GoudSaab.jpeg"
+                alt="Goud Saab"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
@@ -566,19 +576,19 @@ export default function Home() {
             </div>
             <div className="p-4 md:p-5">
               <span className="text-xs text-platinum-500 uppercase tracking-wider mb-1.5 block">
-                Creative Portfolio Website
+                Professional Portfolio Website
               </span>
               <div className="flex items-center justify-between mb-1.5">
                 <h3 className="text-xl md:text-2xl font-luxury text-platinum-metallic">
-                  Mithunam Wall Art
+                  Goud Saab
                 </h3>
               </div>
               <p className="text-platinum-200 text-xs md:text-sm leading-relaxed mb-3">
-                Stunning portfolio website for an interior designer specializing in wall art and creative designs.
+                Elegant professional portfolio website crafted with premium design, showcasing work, expertise, and achievements.
               </p>
               <div className="pt-3 border-t border-platinum-300/20">
                 <a
-                  href="https://mithunam-sample.vercel.app/"
+                  href="https://goud-saab.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-platinum-metallic text-sm font-medium hover:text-platinum-200 transition-colors inline-flex items-center gap-2 cursor-pointer"

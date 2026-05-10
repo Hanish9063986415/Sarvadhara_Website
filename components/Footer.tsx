@@ -98,7 +98,7 @@ export default function Footer() {
               <li className="flex items-start space-x-3">
                 <Instagram className="w-5 h-5 text-platinum-metallic mt-0.5 flex-shrink-0" />
                 <a 
-                  href="https://www.instagram.com/prakash_gandham_/" 
+                  href="https://www.instagram.com/sarvadhara.in/" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-platinum-200 text-sm hover:text-platinum-metallic transition-colors"
