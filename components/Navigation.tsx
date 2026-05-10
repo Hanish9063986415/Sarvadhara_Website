@@ -29,19 +29,16 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-0 sm:px-4 md:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-24 md:h-28">
           {/* Logo - Left Aligned */}
-          <Link href="/" className="flex items-center group z-10 h-full -ml-2 sm:ml-0 md:-ml-2 lg:-ml-4">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center"
-            >
+          <motion.div whileHover={{ scale: 1.05 }} className="flex items-center z-10 h-full -ml-2 sm:ml-0 md:-ml-2 lg:-ml-4">
+            <Link href="/" className="flex items-center group h-full">
               <Logo 
                 size={600} 
                 className="text-platinum-metallic w-auto h-20 md:h-28 lg:h-32 max-h-32" 
                 src="/logo/logo.png"
                 alt="Sarvadhara Tech Innovations Logo"
               />
-            </motion.div>
-          </Link>
+            </Link>
+          </motion.div>
 
           {/* Desktop Navigation - Centered */}
           <div className="hidden md:flex items-center justify-center space-x-8 absolute left-1/2 transform -translate-x-1/2 w-full">
@@ -80,7 +77,7 @@ export default function Navigation() {
                     {item.name}
                   </span>
                   {isActive && (
-                    <motion.div
+                    <motion.span
                       layoutId="activeTab"
                       className="absolute -bottom-1 left-0 right-0 h-0.5 bg-platinum-metallic"
                       initial={false}
