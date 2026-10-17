@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Code, Smartphone, Globe, Building2, Monitor, Sprout, Trophy, GraduationCap, Briefcase, Heart, Palette, ExternalLink } from 'lucide-react'
+import { Code, Smartphone, Globe, Building2, Monitor, ExternalLink } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -29,56 +29,14 @@ const services = [
   },
 ]
 
-const portfolioItems = [
-  {
-    title: 'Plant Darbar',
-    category: 'E-Commerce Website',
-    description: 'Beautiful plant e-commerce platform featuring sustainable indoor and balcony plants in upcycled containers. Complete online shopping experience with product catalog, services, and plant care information.',
-    icon: Sprout,
-    link: 'https://www.plantdarbar.com/',
-    featured: true,
-  },
-  {
-    title: 'SportTribe',
-    category: 'Sports Management Web App',
-    description: 'End-to-end sports management platform with comprehensive features for team management, scheduling, player tracking, and analytics.',
-    icon: Trophy,
-    link: 'https://sportstribenew.vercel.app/',
-    featured: false,
-  },
-  {
-    title: 'My Career Technology',
-    category: 'Learning Management System',
-    description: 'Enterprise-level learning management system designed for comprehensive educational management, course delivery, and student tracking.',
-    icon: GraduationCap,
-    link: null,
-    featured: false,
-  },
-  {
-    title: 'Political Analyst Portfolio',
-    category: 'Professional Portfolio',
-    description: 'Elegant and professional portfolio website showcasing political analysis work, research, publications, and expertise in a sophisticated design.',
-    icon: Briefcase,
-    link: 'https://personal-portfolio-alpha-eight-59.vercel.app/',
-    featured: false,
-  },
-  {
-    title: 'NGO Platform',
-    category: 'NGO Website & Management System',
-    description: 'Comprehensive NGO website featuring management system, donation portal, project exploration, and complete organizational transparency.',
-    icon: Heart,
-    link: null,
-    featured: false,
-  },
-  {
-    title: 'Mithunam Wall Art',
-    category: 'Creative Portfolio Website',
-    description: 'Stunning portfolio website for an interior designer specializing in wall art, showcasing creative works and design services.',
-    icon: Palette,
-    link: 'https://mithunam-sample.vercel.app/',
-    featured: false,
-  },
-]
+const portfolioItems: {
+  title: string
+  category: string
+  description: string
+  icon: typeof Monitor
+  link: string | null
+  featured: boolean
+}[] = []
 
 const testimonials = [
   {
@@ -191,6 +149,7 @@ export default function Services() {
       </section>
 
       {/* Portfolio */}
+      {portfolioItems.length > 0 && (
       <section className="py-20 px-6 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -312,6 +271,7 @@ export default function Services() {
           })}
         </div>
       </section>
+      )}
 
       {/* Testimonials */}
       <section className="py-20 px-6 max-w-6xl mx-auto">
