@@ -7,12 +7,15 @@
     @apply border-platinum-300;
   }
   
-  body {
-    @apply bg-luxury-black text-platinum-light;
-  }
-  
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-luxury-black text-platinum-light;
+    overflow-x: hidden;
+    max-width: 100%;
   }
 }
 
@@ -46,12 +49,92 @@
     border: 1.5px solid rgba(255, 255, 255, 0.25);
   }
   
+  .glass-morphism-navbar {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(0, 0, 0, 0.8);
+  }
+  
   .premium-hover {
     @apply transition-all duration-300 ease-out;
   }
   
   .premium-hover:hover {
     @apply transform scale-105 shadow-platinum-glow;
+  }
+
+  .crm-label {
+    @apply block text-[10px] uppercase tracking-[0.14em] text-platinum-500 mb-1.5;
+  }
+
+  .crm-input {
+    @apply w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2.5 font-sans text-sm text-platinum-100 placeholder:text-platinum-600 focus:border-white/25 focus:outline-none focus:ring-2 focus:ring-white/10 transition-all;
+  }
+
+  .crm-primary-btn {
+    @apply inline-flex min-h-[44px] items-center justify-center rounded-xl border border-platinum-300/35 bg-platinum-metallic/10 px-5 py-2.5 text-xs font-medium uppercase tracking-wider text-platinum-metallic hover:bg-platinum-metallic/15 disabled:opacity-50 transition-colors;
+  }
+
+  .site-container {
+    @apply mx-auto w-full min-w-0 max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .automate-page-container {
+    @apply mx-auto w-full min-w-0 max-w-[1400px];
+  }
+
+  .horizontal-scroll-tabs {
+    @apply flex gap-2 overflow-x-auto overscroll-x-contain pb-1;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .horizontal-scroll-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Clean sans-serif figures for money, counts, and percentages (Automate CRM) */
+  .crm-stat {
+    @apply font-sans font-semibold tabular-nums tracking-tight text-platinum-100;
+    font-feature-settings: 'tnum' 1, 'lnum' 1;
+  }
+
+  .crm-stat-sm {
+    @apply crm-stat text-sm;
+  }
+
+  .crm-stat-md {
+    @apply crm-stat text-lg sm:text-xl;
+  }
+
+  .crm-stat-lg {
+    @apply crm-stat text-2xl sm:text-3xl;
+  }
+
+  .crm-date-field {
+    @apply relative flex items-center gap-2 rounded-xl border border-white/10 bg-black/40 px-3 py-1 transition-all focus-within:border-violet-400/35 focus-within:ring-2 focus-within:ring-violet-500/15;
+    color-scheme: dark;
+  }
+
+  .crm-date-field-invalid {
+    @apply border-red-400/40 ring-2 ring-red-500/10;
+  }
+
+  .crm-date-field-icon {
+    @apply text-platinum-500;
+  }
+
+  .crm-date-field-text {
+    @apply min-w-0 flex-1 border-0 bg-transparent py-2 font-sans text-sm font-medium tabular-nums text-platinum-100 placeholder:text-platinum-600 focus:outline-none;
+  }
+
+  .crm-date-field-native {
+    @apply pointer-events-none absolute h-0 w-0 opacity-0;
+  }
+
+  .crm-date-field-picker {
+    @apply shrink-0 rounded-lg border border-white/10 p-2 text-platinum-400 transition-colors hover:border-violet-400/30 hover:bg-violet-500/10 hover:text-violet-200;
   }
   
   .metallic-border {
@@ -179,6 +262,66 @@
 
   .marquee-container:hover {
     animation-play-state: paused;
+  }
+}
+
+@media print {
+  body.printing-maintenance-invoice {
+    background: #fff !important;
+  }
+
+  body.printing-maintenance-invoice .no-print {
+    display: none !important;
+  }
+
+  body.printing-maintenance-invoice nav,
+  body.printing-maintenance-invoice header,
+  body.printing-maintenance-invoice aside,
+  body.printing-maintenance-invoice footer {
+    display: none !important;
+  }
+
+  body.printing-maintenance-invoice [id^='maintenance-invoice-print'],
+  body.printing-maintenance-invoice .invoice-pdf-capture-sheet {
+    box-shadow: none !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body.printing-maintenance-invoice [id^='maintenance-invoice-print'] img,
+  body.printing-maintenance-invoice .invoice-pdf-capture-sheet img {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+.invoice-pdf-capture-root {
+  position: fixed;
+  left: -10000px;
+  top: 0;
+  width: 794px;
+  background: #fff;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.invoice-pdf-capture-sheet {
+  box-shadow: none !important;
+  max-width: none !important;
+  width: 794px !important;
+  margin: 0 !important;
+  background: #fff !important;
+}
+
+.invoice-logo-wrap {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
+}
+
+@media print {
+  .invoice-logo-wrap {
+    filter: none;
   }
 }
 

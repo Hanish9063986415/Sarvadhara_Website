@@ -1,10 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Code, Smartphone, Globe, Building2, Monitor, ExternalLink } from 'lucide-react'
+import { Code, Smartphone, Globe, Building2 } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
+import PortfolioWorksGrid from '@/components/PortfolioWorksGrid'
 
 const services = [
   {
@@ -28,15 +28,6 @@ const services = [
     description: 'Deploy mission-critical infrastructure with advanced integration capabilities, comprehensive security protocols, and future-ready scalability frameworks.',
   },
 ]
-
-const portfolioItems: {
-  title: string
-  category: string
-  description: string
-  icon: typeof Monitor
-  link: string | null
-  featured: boolean
-}[] = []
 
 const testimonials = [
   {
@@ -87,40 +78,40 @@ export default function Services() {
   }
 
   return (
-    <main className="min-h-screen bg-luxury-black pt-20">
+    <main className="min-h-screen bg-luxury-black pt-16 sm:pt-20 md:pt-24">
       {/* Hero Section */}
-      <section className="py-32 px-6 text-center">
+      <section className="py-24 sm:py-28 md:py-32 px-4 sm:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-6xl md:text-7xl font-luxury text-platinum-metallic mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-luxury text-platinum-metallic mb-4 sm:mb-6 px-2">
             Services & Client Works
           </h1>
-          <div className="w-24 h-0.5 bg-platinum-metallic mx-auto mb-8" />
-          <p className="text-xl text-platinum-200 max-w-2xl mx-auto">
+          <div className="w-24 h-0.5 bg-platinum-metallic mx-auto mb-6 sm:mb-8" />
+          <p className="text-base sm:text-lg md:text-xl text-platinum-200 max-w-2xl mx-auto px-4">
             Premium technology solutions crafted with precision and excellence
           </p>
         </motion.div>
       </section>
 
       {/* Software Services */}
-      <section className="py-20 px-6 max-w-7xl mx-auto">
+      <section className="py-16 sm:py-20 px-4 sm:px-6 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-luxury text-platinum-metallic mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-luxury text-platinum-metallic mb-4 sm:mb-6 px-2">
             Software Services
           </h2>
           <div className="w-24 h-0.5 bg-platinum-metallic mx-auto" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {services.map((service, index) => {
             const Icon = service.icon
             return (
@@ -148,130 +139,12 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Portfolio */}
-      {portfolioItems.length > 0 && (
-      <section className="py-20 px-6 max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-5xl md:text-6xl font-luxury text-platinum-metallic mb-6">
-            Our Works
-          </h2>
-          <div className="w-24 h-0.5 bg-platinum-metallic mx-auto mb-8" />
-          <p className="text-platinum-200 text-lg max-w-2xl mx-auto">
-            Showcasing excellence across industries and platforms
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {portfolioItems.map((item, index) => {
-            const IconComponent = item.icon || Monitor
-            const isFeatured = item.featured
-            
-            const cardContent = (
-              <>
-                {item.link ? (
-                  <div className={`h-48 md:h-56 bg-gradient-to-br ${isFeatured ? 'from-green-900/30 via-platinum-900/20 to-luxury-black' : 'from-platinum-900/20 to-luxury-black'} relative overflow-hidden ${isFeatured ? 'group-hover:from-green-900/40' : 'group-hover:from-platinum-900/30'} transition-all duration-300`}>
-                    {/* Website Preview - Using iframe for live preview */}
-                    <div className="absolute inset-0 w-full h-full">
-                      <iframe
-                        src={item.link}
-                        className="w-full h-full border-0 scale-75 origin-top-left"
-                        style={{ width: '133.33%', height: '133.33%' }}
-                        title={`${item.title} Homepage Preview`}
-                        loading="lazy"
-                        sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-                        allow="fullscreen"
-                        referrerPolicy="no-referrer-when-downgrade"
-                      />
-                      {/* Overlay gradient for better visual integration */}
-                      <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/10 via-transparent to-luxury-black/30 pointer-events-none" />
-                    </div>
-                    {/* Featured Badge */}
-                    {isFeatured && (
-                      <div className="absolute top-4 right-4 bg-green-500/20 border border-green-400/40 px-3 py-1 rounded-full backdrop-blur-sm z-10">
-                        <span className="text-green-300 text-xs font-medium">Featured</span>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div className={`h-36 md:h-40 bg-gradient-to-br from-platinum-900/20 to-luxury-black flex items-center justify-center relative overflow-hidden group-hover:from-platinum-900/30 transition-all duration-300`}>
-                    <IconComponent className={`w-12 h-12 md:w-14 md:h-14 text-platinum-metallic/30 group-hover:scale-110 transition-transform duration-300`} />
-                  </div>
-                )}
-                <div className="p-4 md:p-5">
-                  <span className="text-xs text-platinum-500 uppercase tracking-wider mb-1.5 block">
-                    {item.category}
-                  </span>
-                  <div className="flex items-center justify-between mb-1.5">
-                    <h3 className="text-xl md:text-2xl font-luxury text-platinum-metallic">
-                      {item.title}
-                    </h3>
-                    {item.link && (
-                      <ExternalLink className="w-4 h-4 text-platinum-metallic/50 group-hover:text-platinum-metallic transition-colors" />
-                    )}
-                  </div>
-                  <p className="text-platinum-200 text-xs md:text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                  {item.link && (
-                    <div className="mt-4 pt-4 border-t border-platinum-300/20">
-                      <a
-                        href={item.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-platinum-metallic text-sm font-medium hover:text-platinum-200 transition-colors inline-flex items-center gap-2"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        Visit Website
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    </div>
-                  )}
-                </div>
-              </>
-            )
-
-            if (item.link) {
-              return (
-                <motion.a
-                  key={index}
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  className={`glass-morphism rounded-xl overflow-hidden premium-hover group block ${isFeatured ? 'ring-2 ring-green-400/30' : ''}`}
-                >
-                  {cardContent}
-                </motion.a>
-              )
-            }
-
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className={`glass-morphism rounded-xl overflow-hidden premium-hover group ${isFeatured ? 'ring-2 ring-green-400/30' : ''}`}
-              >
-                {cardContent}
-              </motion.div>
-            )
-          })}
-        </div>
-      </section>
-      )}
+      <PortfolioWorksGrid
+        id="our-works"
+        title="Our Works"
+        subtitle="Every link below is a live product we designed, engineered, and shipped"
+        className="py-20 px-4 sm:px-6 max-w-6xl mx-auto scroll-mt-24"
+      />
 
       {/* Testimonials */}
       <section className="py-20 px-6 max-w-6xl mx-auto">
@@ -344,7 +217,19 @@ export default function Services() {
           <div className="overflow-hidden py-8">
             <div className="marquee-container flex gap-8 md:gap-12 lg:gap-16">
               {/* First set of logos */}
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
+              {[
+                { name: 'BUILD', src: '/Clients/BUILD.jpeg' },
+                { name: 'Greenko', src: '/Clients/greenko.jpeg' },
+                { name: 'IIT Madras', src: '/Clients/iit madras.jpeg' },
+                { name: 'IIT Ropar', src: '/Clients/iit roopar.jpeg' },
+                { name: 'ITIC IIT Hyderabad', src: '/Clients/ITIC IIT HYDERABAD.jpeg' },
+                { name: 'My Career Technologies', src: '/Clients/my carrer technologies.jpeg' },
+                { name: 'Plant Darbar', src: '/Clients/Plant Darbur.jpeg' },
+                { name: 'Sadhanika', src: '/Clients/Sadhanika.jpeg' },
+                { name: 'School of Startups', src: '/Clients/School of Startups.jpeg' },
+                { name: 'Sportstribe', src: '/Clients/Sportstribe.jpeg' },
+                { name: 'Vishva', src: '/Clients/Vishva.jpeg' },
+              ].map((client, index) => (
                 <motion.div
                   key={`first-${index}`}
                   className="flex-shrink-0 glass-morphism rounded-xl p-6 md:p-8 premium-hover flex items-center justify-center w-48 md:w-56 lg:w-64 h-32 md:h-40 lg:h-48 group relative"
@@ -353,27 +238,31 @@ export default function Services() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-platinum-metallic/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="w-full h-full flex items-center justify-center relative z-10">
-                    {/* Placeholder - Replace with actual client logos */}
-                    <div className="w-full h-full flex items-center justify-center border border-platinum-300/20 rounded-lg group-hover:border-platinum-metallic/40 transition-colors duration-300">
-                      <div className="text-platinum-300/30 group-hover:text-platinum-metallic/50 text-xs md:text-sm font-light text-center px-2 transition-colors duration-300">
-                        Client {index}
-                      </div>
-                    </div>
-                    {/* Example: Uncomment and replace with actual logo paths
                     <Image
-                      src={`/images/clients/client-${index}.png`}
-                      alt={`Client ${index}`}
-                      width={200}
-                      height={150}
+                      src={client.src}
+                      alt={client.name}
+                      width={250}
+                      height={180}
                       className="object-contain w-full h-full opacity-70 group-hover:opacity-100 transition-all duration-300 filter group-hover:brightness-110"
                     />
-                    */}
                   </div>
                 </motion.div>
               ))}
               
               {/* Duplicate set for seamless infinite loop */}
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
+              {[
+                { name: 'BUILD', src: '/Clients/BUILD.jpeg' },
+                { name: 'Greenko', src: '/Clients/greenko.jpeg' },
+                { name: 'IIT Madras', src: '/Clients/iit madras.jpeg' },
+                { name: 'IIT Ropar', src: '/Clients/iit roopar.jpeg' },
+                { name: 'ITIC IIT Hyderabad', src: '/Clients/ITIC IIT HYDERABAD.jpeg' },
+                { name: 'My Career Technologies', src: '/Clients/my carrer technologies.jpeg' },
+                { name: 'Plant Darbar', src: '/Clients/Plant Darbur.jpeg' },
+                { name: 'Sadhanika', src: '/Clients/Sadhanika.jpeg' },
+                { name: 'School of Startups', src: '/Clients/School of Startups.jpeg' },
+                { name: 'Sportstribe', src: '/Clients/Sportstribe.jpeg' },
+                { name: 'Vishva', src: '/Clients/Vishva.jpeg' },
+              ].map((client, index) => (
                 <motion.div
                   key={`second-${index}`}
                   className="flex-shrink-0 glass-morphism rounded-xl p-6 md:p-8 premium-hover flex items-center justify-center w-48 md:w-56 lg:w-64 h-32 md:h-40 lg:h-48 group relative"
@@ -382,21 +271,13 @@ export default function Services() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-platinum-metallic/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="w-full h-full flex items-center justify-center relative z-10">
-                    {/* Placeholder - Replace with actual client logos */}
-                    <div className="w-full h-full flex items-center justify-center border border-platinum-300/20 rounded-lg group-hover:border-platinum-metallic/40 transition-colors duration-300">
-                      <div className="text-platinum-300/30 group-hover:text-platinum-metallic/50 text-xs md:text-sm font-light text-center px-2 transition-colors duration-300">
-                        Client {index}
-                      </div>
-                    </div>
-                    {/* Example: Uncomment and replace with actual logo paths
                     <Image
-                      src={`/images/clients/client-${index}.png`}
-                      alt={`Client ${index}`}
-                      width={200}
-                      height={150}
+                      src={client.src}
+                      alt={client.name}
+                      width={250}
+                      height={180}
                       className="object-contain w-full h-full opacity-70 group-hover:opacity-100 transition-all duration-300 filter group-hover:brightness-110"
                     />
-                    */}
                   </div>
                 </motion.div>
               ))}

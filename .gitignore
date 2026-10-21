@@ -34,3 +34,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# CRM data (local / server only)
+/data/crm-projects.json
+/data/crm-finance.json
+/data/crm-monthly-expenses.json
+/data/crm-project-documents/
+/data/crm-maintenance-records.json
+/data/crm-maintenance-settings.json
+/data/crm-invoice-shares.json
+

@@ -23,24 +23,21 @@ export default function Navigation() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 2.8, ease: 'easeOut' }}
-      className="fixed top-0 left-0 right-0 z-50 glass-morphism border-b-2 border-platinum-300/40"
+      className="fixed top-0 left-0 right-0 z-50 glass-morphism-navbar"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="relative flex items-center h-24 md:h-28">
+      <div className="site-container max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8">
+        <div className="relative flex h-16 items-center justify-between sm:h-20 md:h-24 lg:h-28">
           {/* Logo - Left Aligned */}
-          <Link href="/" className="flex items-center group z-10 h-full -ml-2 md:-ml-4">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center"
-            >
+          <motion.div whileHover={{ scale: 1.05 }} className="z-10 flex h-full items-center">
+            <Link href="/" className="group flex h-full items-center">
               <Logo 
-                size={600} 
-                className="text-platinum-metallic w-auto h-28 md:h-32 max-h-32" 
-                src="/images/logo.png"
+                size={280} 
+                className="h-12 w-auto max-h-14 text-platinum-metallic sm:h-16 sm:max-h-20 md:h-24 md:max-h-28 lg:h-32 lg:max-h-32" 
+                src="/logo/logo.png"
                 alt="Sarvadhara Tech Innovations Logo"
               />
-            </motion.div>
-          </Link>
+            </Link>
+          </motion.div>
 
           {/* Desktop Navigation - Centered */}
           <div className="hidden md:flex items-center justify-center space-x-8 absolute left-1/2 transform -translate-x-1/2 w-full">
@@ -79,7 +76,7 @@ export default function Navigation() {
                     {item.name}
                   </span>
                   {isActive && (
-                    <motion.div
+                    <motion.span
                       layoutId="activeTab"
                       className="absolute -bottom-1 left-0 right-0 h-0.5 bg-platinum-metallic"
                       initial={false}
@@ -93,8 +90,11 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
+            type="button"
+            aria-expanded={mobileMenuOpen}
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-platinum-200 hover:text-platinum-metallic transition-colors z-10 ml-auto"
+            className="z-10 ml-auto flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-platinum-200 transition-colors hover:text-platinum-metallic md:hidden"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -106,7 +106,7 @@ export default function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden pb-4 space-y-4"
+            className="space-y-1 border-t border-white/10 pb-4 pt-3 md:hidden"
           >
             {navItems.map((item) => {
               const isActive = pathname === item.path || (item.path.includes('#') && pathname === item.path.split('#')[0])
@@ -134,7 +134,7 @@ export default function Navigation() {
                   key={item.path}
                   href={item.path}
                   onClick={handleClick}
-                  className={`block text-base font-medium transition-colors ${
+                  className={`block min-h-[44px] py-2.5 text-base font-medium transition-colors ${
                     isActive
                       ? 'text-platinum-metallic'
                       : 'text-platinum-200 hover:text-platinum-metallic'

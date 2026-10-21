@@ -62,7 +62,7 @@ export default function SplashScreen() {
                 size={2400} 
                 animated={true} 
                 className="text-platinum-metallic w-full max-w-[75vw] h-auto" 
-                src="/images/logo.png"
+                src="/logo/logo.png"
                 alt="Sarvadhara Tech Innovations Logo"
               />
             </motion.div>

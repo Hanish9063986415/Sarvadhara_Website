@@ -15,7 +15,7 @@ export default function Logo({
   className = '', 
   size = 80, 
   animated = false,
-  src = '/images/logo.png', // Default logo path - must be in public/images/
+  src = '/logo/logo.png', // Default logo path - must be in public/logo/
   alt = 'STI Logo - Sarvadhara Tech Innovations'
 }: LogoProps) {
   const logoContent = (

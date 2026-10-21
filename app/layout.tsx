@@ -1,9 +1,7 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, Inter, Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
-import Navigation from '@/components/Navigation'
-import Footer from '@/components/Footer'
-import SplashScreen from '@/components/SplashScreen'
+import ConditionalSiteChrome from '@/components/ConditionalSiteChrome'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -29,6 +27,12 @@ export const metadata: Metadata = {
   description: 'Premium technology solutions and innovative products. Software development, enterprise systems, and SAAMRAS automation solutions.',
 }
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover' as const,
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -37,10 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${playfair.variable} ${cormorant.variable} ${inter.variable} font-sans bg-luxury-black text-platinum-light antialiased`}>
-        <SplashScreen />
-        <Navigation />
-        {children}
-        <Footer />
+        <ConditionalSiteChrome>{children}</ConditionalSiteChrome>
       </body>
     </html>
   )
