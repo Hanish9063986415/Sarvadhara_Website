@@ -4,7 +4,8 @@ import { useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ExternalLink, Filter, Plus } from 'lucide-react'
+import { ExternalLink, Filter, Plus, Trash2 } from 'lucide-react'
+import DeleteCrmProjectDialog, { deleteCrmProjectRequest } from '@/components/automate/DeleteCrmProjectDialog'
 import { useCrmProjects } from '@/components/automate/useCrmProjects'
 import { AUTOMATE_PROJECTS_NEW_PATH, projectRecordPath } from '@/lib/automate-routes'
 import { crmProjectToInput } from '@/lib/crm-project-api-parse'
@@ -57,10 +58,26 @@ function statusTone(status: CrmProjectStatus): string {
 }
 
 export default function ProjectsTrackBoard() {
-  const { projects, loading, error, setError, reload } = useCrmProjects()
+  const { projects, loading, error, setError, reload, canDeleteProjects } = useCrmProjects()
   const [filter, setFilter] = useState<CrmProjectStatus | 'all'>('all')
   const [savingId, setSavingId] = useState<string | null>(null)
+  const [deleteTarget, setDeleteTarget] = useState<{ id: string; name: string } | null>(null)
+  const [deleting, setDeleting] = useState(false)
   const router = useRouter()
+
+  async function confirmDeleteProject() {
+    if (!deleteTarget) return
+    setDeleting(true)
+    setError(null)
+    const result = await deleteCrmProjectRequest(deleteTarget.id)
+    setDeleting(false)
+    if (!result.ok) {
+      setError(result.error)
+      return
+    }
+    setDeleteTarget(null)
+    await reload()
+  }
 
   const summary = useMemo(() => {
     const active = projects.filter((p) => p.status === 'active').length
@@ -188,11 +205,26 @@ export default function ProjectsTrackBoard() {
                         </p>
                       )}
                     </div>
-                    <span
-                      className={`rounded-full border px-2 py-0.5 text-[10px] uppercase tracking-wider ${statusTone(p.status)}`}
-                    >
-                      {p.status.replace('_', ' ')}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span
+                        className={`rounded-full border px-2 py-0.5 text-[10px] uppercase tracking-wider ${statusTone(p.status)}`}
+                      >
+                        {p.status.replace('_', ' ')}
+                      </span>
+                      {canDeleteProjects ? (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            setDeleteTarget({ id: p.id, name: p.projectName })
+                          }}
+                          className="rounded-lg p-1.5 text-platinum-500 hover:bg-red-500/10 hover:text-red-300"
+                          aria-label={`Delete ${p.projectName}`}
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </button>
+                      ) : null}
+                    </div>
                   </div>
                   <div className="mt-2 flex flex-wrap items-center gap-3">
                     {p.projectUrl && (
@@ -282,6 +314,13 @@ export default function ProjectsTrackBoard() {
         </div>
       )}
 
+      <DeleteCrmProjectDialog
+        open={Boolean(deleteTarget)}
+        projectName={deleteTarget?.name ?? ''}
+        loading={deleting}
+        onClose={() => !deleting && setDeleteTarget(null)}
+        onConfirm={confirmDeleteProject}
+      />
     </div>
   )
 }

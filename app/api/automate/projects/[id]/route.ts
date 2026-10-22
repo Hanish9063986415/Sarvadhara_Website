@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import {
   canAccessProjectWorkspaceData,
-  isCeoVaultAuthenticated,
+  canDeleteCrmProjects,
 } from '@/lib/automate-projects-api-auth'
 import { parseCrmProjectBody } from '@/lib/crm-project-api-parse'
 import { deleteMaintenanceRecordsForProject } from '@/lib/crm-maintenance-records-store'
@@ -18,7 +18,7 @@ export async function GET(
   if (!project) {
     return NextResponse.json({ error: 'Project not found' }, { status: 404 })
   }
-  const canDelete = await isCeoVaultAuthenticated()
+  const canDelete = await canDeleteCrmProjects()
   return NextResponse.json({ project, canDelete })
 }
 
@@ -50,11 +50,8 @@ export async function DELETE(
   if (!(await canAccessProjectWorkspaceData())) {
     return NextResponse.json({ error: 'Automate sign-in required.' }, { status: 401 })
   }
-  if (!(await isCeoVaultAuthenticated())) {
-    return NextResponse.json(
-      { error: 'Only an admin can delete a project. Sign in with the admin account.' },
-      { status: 403 }
-    )
+  if (!(await canDeleteCrmProjects())) {
+    return NextResponse.json({ error: 'Automate sign-in required.' }, { status: 401 })
   }
   const { id } = params
   const ok = await deleteCrmProject(id)

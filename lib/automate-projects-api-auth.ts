@@ -21,3 +21,8 @@ export const isProjectsSectionAuthenticated = isCeoVaultAuthenticated
 export async function canAccessProjectWorkspaceData(): Promise<boolean> {
   return isAutomateAuthenticated()
 }
+
+/** Any signed-in Automate user may delete projects (with confirmation in UI). */
+export async function canDeleteCrmProjects(): Promise<boolean> {
+  return canAccessProjectWorkspaceData()
+}

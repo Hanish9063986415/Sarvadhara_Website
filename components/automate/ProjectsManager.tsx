@@ -4,7 +4,8 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { CheckCircle2, Pencil, Plus, Shield, Trash2, X } from 'lucide-react'
+import { CheckCircle2, Pencil, Plus, Trash2, X } from 'lucide-react'
+import DeleteCrmProjectDialog, { deleteCrmProjectRequest } from '@/components/automate/DeleteCrmProjectDialog'
 import type {
   CrmPaymentTransaction,
   CrmProject,
@@ -15,13 +16,8 @@ import type {
 import ProjectPaymentTransactions from '@/components/automate/ProjectPaymentTransactions'
 import ClientContactFields from '@/components/automate/ClientContactFields'
 import { CRM_PROJECT_PHASES } from '@/types/crm-project'
-import CeoVaultLockButton from '@/components/automate/CeoVaultLockButton'
 import VaultDashboard from '@/components/automate/VaultDashboard'
-import {
-  AUTOMATE_PROJECTS_LOGIN_PATH,
-  AUTOMATE_PROJECTS_VAULT_PATH,
-  projectRecordPath,
-} from '@/lib/automate-routes'
+import { projectRecordPath } from '@/lib/automate-routes'
 import { financialsFromTransactions } from '@/types/crm-project'
 import { formatInr } from '@/lib/format-currency'
 
@@ -326,6 +322,8 @@ export default function ProjectsManager() {
   const [editForm, setEditForm] = useState<FormState>(emptyForm())
   const [saving, setSaving] = useState(false)
   const [canDelete, setCanDelete] = useState(false)
+  const [deleteTarget, setDeleteTarget] = useState<{ id: string; name: string } | null>(null)
+  const [deleting, setDeleting] = useState(false)
 
   const loadProjects = useCallback(async () => {
     setError(null)
@@ -393,15 +391,18 @@ export default function ProjectsManager() {
     await loadProjects()
   }
 
-  async function handleDelete(id: string, name: string) {
-    if (!window.confirm(`Delete project “${name}”?`)) return
-    const res = await fetch(`/api/automate/projects/${id}`, { method: 'DELETE' })
-    if (!res.ok) {
-      const data = (await res.json().catch(() => ({}))) as { error?: string }
-      setError(data.error ?? 'Failed to delete project.')
+  async function confirmDeleteProject() {
+    if (!deleteTarget) return
+    setDeleting(true)
+    setError(null)
+    const result = await deleteCrmProjectRequest(deleteTarget.id)
+    setDeleting(false)
+    if (!result.ok) {
+      setError(result.error)
       return
     }
-    if (editingId === id) setEditingId(null)
+    if (editingId === deleteTarget.id) setEditingId(null)
+    setDeleteTarget(null)
     await loadProjects()
   }
 
@@ -417,20 +418,9 @@ export default function ProjectsManager() {
 
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="text-sm text-platinum-400">
-          Add and edit projects with your Automate login. Deleting a project needs the admin login.
+          Add, edit, and delete projects while signed in to Automate.
         </p>
         <div className="flex flex-wrap items-center gap-2">
-          {canDelete ? (
-            <CeoVaultLockButton />
-          ) : (
-            <Link
-              href={`${AUTOMATE_PROJECTS_LOGIN_PATH}?next=${encodeURIComponent(AUTOMATE_PROJECTS_VAULT_PATH)}`}
-              className="inline-flex items-center gap-2 rounded-xl border border-amber-400/25 bg-amber-500/10 px-4 py-2.5 text-xs uppercase tracking-wider text-amber-100 hover:bg-amber-500/15 transition-colors"
-            >
-              <Shield className="w-4 h-4" />
-              Admin login to delete
-            </Link>
-          )}
           <button
             type="button"
             onClick={() => {
@@ -561,7 +551,7 @@ export default function ProjectsManager() {
                         {canDelete && (
                           <button
                             type="button"
-                            onClick={() => handleDelete(p.id, p.projectName)}
+                            onClick={() => setDeleteTarget({ id: p.id, name: p.projectName })}
                             className="p-2 rounded-lg text-platinum-500 hover:bg-red-500/10 hover:text-red-300"
                             aria-label={`Delete ${p.projectName}`}
                           >
@@ -577,6 +567,14 @@ export default function ProjectsManager() {
           </div>
         )}
       </div>
+
+      <DeleteCrmProjectDialog
+        open={Boolean(deleteTarget)}
+        projectName={deleteTarget?.name ?? ''}
+        loading={deleting}
+        onClose={() => !deleting && setDeleteTarget(null)}
+        onConfirm={confirmDeleteProject}
+      />
     </div>
   )
 }

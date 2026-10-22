@@ -1,22 +1,27 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { ArrowRight, CalendarClock, FolderKanban, Plus, Receipt, TrendingUp } from 'lucide-react'
+import { ArrowRight, CalendarClock, FolderKanban, Plus, Receipt, Trash2, TrendingUp } from 'lucide-react'
+import DeleteCrmProjectDialog, { deleteCrmProjectRequest } from '@/components/automate/DeleteCrmProjectDialog'
 import {
   AUTOMATE_PROJECTS_EXPENSES_PATH,
   AUTOMATE_PROJECTS_MAINTENANCE_PATH,
   AUTOMATE_PROJECTS_NEW_PATH,
   AUTOMATE_PROJECTS_TRACK_PATH,
   AUTOMATE_PROJECTS_VAULT_PATH,
+  projectRecordPath,
 } from '@/lib/automate-routes'
 import { formatInr } from '@/lib/format-currency'
 import { useCrmProjects } from '@/components/automate/useCrmProjects'
 import { totalMaintenanceDue } from '@/lib/maintenance-schedule'
+
 const modules = [
   {
     title: 'Payments vault',
-    description: 'Add and edit contracts, payments, and balances. Only an admin can delete a project.',
+    description: 'Contracts, payment lines, and balances in one ledger.',
     href: AUTOMATE_PROJECTS_VAULT_PATH,
     icon: FolderKanban,
     accent: 'from-blue-500/10 to-transparent border-blue-400/20',
@@ -45,7 +50,10 @@ const modules = [
 ]
 
 export default function ProjectsHub() {
-  const { projects, loading } = useCrmProjects()
+  const router = useRouter()
+  const { projects, loading, error, setError, reload, canDeleteProjects } = useCrmProjects()
+  const [deleteTarget, setDeleteTarget] = useState<{ id: string; name: string } | null>(null)
+  const [deleting, setDeleting] = useState(false)
 
   const avgProgress =
     projects.length === 0
@@ -54,13 +62,27 @@ export default function ProjectsHub() {
   const monthlyDue = totalMaintenanceDue(projects)
   const activeMaintenance = projects.filter((p) => p.maintenanceEnabled && p.maintenanceMonthlyAmount > 0).length
 
+  async function confirmDeleteProject() {
+    if (!deleteTarget) return
+    setDeleting(true)
+    setError(null)
+    const result = await deleteCrmProjectRequest(deleteTarget.id)
+    setDeleting(false)
+    if (!result.ok) {
+      setError(result.error)
+      return
+    }
+    setDeleteTarget(null)
+    await reload()
+  }
+
   return (
     <div className="automate-page-container mx-auto max-w-5xl space-y-8">
       <div>
         <p className="text-[11px] uppercase tracking-[0.22em] text-platinum-500">Projects workspace</p>
         <div className="mt-3 flex flex-wrap items-center gap-3">
           <p className="text-sm text-platinum-400 max-w-xl leading-relaxed">
-            Anyone signed in to Automate can add and edit projects. Deleting a project needs the admin login.
+            Add, edit, and delete projects while signed in to Automate. Deleting removes all CRM data for that client.
           </p>
           <Link
             href={AUTOMATE_PROJECTS_NEW_PATH}
@@ -71,6 +93,10 @@ export default function ProjectsHub() {
           </Link>
         </div>
       </div>
+
+      {error ? (
+        <p className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-200">{error}</p>
+      ) : null}
 
       <div className="grid grid-cols-1 gap-3 xs:grid-cols-2 lg:grid-cols-4">
         {[
@@ -88,6 +114,63 @@ export default function ProjectsHub() {
           </div>
         ))}
       </div>
+
+      <section className="rounded-2xl border border-white/10 overflow-hidden">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 bg-white/[0.03] px-4 py-3 sm:px-5">
+          <h2 className="font-luxury text-lg text-platinum-metallic">All projects</h2>
+          <Link
+            href={AUTOMATE_PROJECTS_TRACK_PATH}
+            className="text-xs uppercase tracking-wider text-platinum-500 hover:text-platinum-metallic"
+          >
+            Open track board →
+          </Link>
+        </div>
+        {loading ? (
+          <p className="p-8 text-center text-sm text-platinum-500">Loading projects…</p>
+        ) : projects.length === 0 ? (
+          <p className="p-8 text-center text-sm text-platinum-500">No projects yet. Create one to get started.</p>
+        ) : (
+          <ul className="divide-y divide-white/[0.06]">
+            {projects.map((p) => (
+              <li
+                key={p.id}
+                className="flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5 hover:bg-white/[0.03] transition-colors"
+              >
+                <button
+                  type="button"
+                  onClick={() => router.push(projectRecordPath(p.id))}
+                  className="min-w-0 flex-1 text-left"
+                >
+                  <p className="font-medium text-platinum-200 truncate">{p.projectName}</p>
+                  <p className="text-sm text-platinum-500 truncate">{p.clientName || 'Client TBD'}</p>
+                  <p className="mt-1 text-xs text-platinum-600">
+                    {p.progressPercent}% · {p.status.replace('_', ' ')} · Balance {formatInr(p.balance)}
+                  </p>
+                </button>
+                <div className="flex shrink-0 items-center gap-2">
+                  <Link
+                    href={projectRecordPath(p.id)}
+                    className="rounded-lg border border-white/10 px-3 py-2 text-xs uppercase tracking-wider text-platinum-400 hover:border-white/20 hover:text-platinum-metallic"
+                  >
+                    Open
+                  </Link>
+                  {canDeleteProjects ? (
+                    <button
+                      type="button"
+                      onClick={() => setDeleteTarget({ id: p.id, name: p.projectName })}
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-red-400/20 bg-red-500/10 px-3 py-2 text-xs uppercase tracking-wider text-red-200 hover:bg-red-500/15"
+                      aria-label={`Delete ${p.projectName}`}
+                    >
+                      <Trash2 className="h-3.5 w-3.5" />
+                      Delete
+                    </button>
+                  ) : null}
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {modules.map((mod, i) => {
@@ -117,6 +200,14 @@ export default function ProjectsHub() {
           )
         })}
       </div>
+
+      <DeleteCrmProjectDialog
+        open={Boolean(deleteTarget)}
+        projectName={deleteTarget?.name ?? ''}
+        loading={deleting}
+        onClose={() => !deleting && setDeleteTarget(null)}
+        onConfirm={confirmDeleteProject}
+      />
     </div>
   )
 }

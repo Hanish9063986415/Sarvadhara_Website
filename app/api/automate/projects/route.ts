@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import {
   canAccessProjectWorkspaceData,
-  isCeoVaultAuthenticated,
+  canDeleteCrmProjects,
 } from '@/lib/automate-projects-api-auth'
 import { createCrmProject, listCrmProjects } from '@/lib/crm-projects-store'
 import { parseCrmProjectBody } from '@/lib/crm-project-api-parse'
@@ -11,7 +11,7 @@ export async function GET() {
     return NextResponse.json({ error: 'Automate sign-in required.' }, { status: 401 })
   }
   const projects = await listCrmProjects()
-  const canDelete = await isCeoVaultAuthenticated()
+  const canDelete = await canDeleteCrmProjects()
   return NextResponse.json({ projects, canDelete })
 }
 

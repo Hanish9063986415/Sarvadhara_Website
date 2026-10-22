@@ -14,6 +14,7 @@ import {
   Trash2,
 } from 'lucide-react'
 import AutomateShell from '@/components/automate/AutomateShell'
+import DeleteCrmProjectDialog, { deleteCrmProjectRequest } from '@/components/automate/DeleteCrmProjectDialog'
 import ClientContactPanel from '@/components/automate/ClientContactPanel'
 import ProjectDocumentsPanel from '@/components/automate/ProjectDocumentsPanel'
 import ProjectNotesTasks from '@/components/automate/ProjectNotesTasks'
@@ -68,6 +69,8 @@ export default function ProjectRecord({ projectId }: { projectId: string }) {
   const router = useRouter()
   const [project, setProject] = useState<CrmProject | null>(null)
   const [canDelete, setCanDelete] = useState(false)
+  const [deleteOpen, setDeleteOpen] = useState(false)
+  const [deleting, setDeleting] = useState(false)
   const [loading, setLoading] = useState(true)
   const [missing, setMissing] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -100,15 +103,17 @@ export default function ProjectRecord({ projectId }: { projectId: string }) {
     }
   }, [projectId])
 
-  async function handleDelete() {
+  async function confirmDeleteProject() {
     if (!project) return
-    if (!window.confirm(`Delete project “${project.projectName}”?`)) return
-    const res = await fetch(`/api/automate/projects/${project.id}`, { method: 'DELETE' })
-    if (!res.ok) {
-      const data = (await res.json().catch(() => ({}))) as { error?: string }
-      setError(data.error ?? 'Failed to delete project.')
+    setDeleting(true)
+    setError(null)
+    const result = await deleteCrmProjectRequest(project.id)
+    setDeleting(false)
+    if (!result.ok) {
+      setError(result.error)
       return
     }
+    setDeleteOpen(false)
     router.push(AUTOMATE_PROJECTS_TRACK_PATH)
   }
 
@@ -345,7 +350,7 @@ export default function ProjectRecord({ projectId }: { projectId: string }) {
               {canDelete && (
                 <button
                   type="button"
-                  onClick={handleDelete}
+                  onClick={() => setDeleteOpen(true)}
                   className="inline-flex items-center gap-2 rounded-xl border border-red-400/25 px-3 py-2 text-[10px] uppercase tracking-wider text-red-200 hover:bg-red-500/10"
                 >
                   <Trash2 className="h-3.5 w-3.5" />
@@ -356,6 +361,14 @@ export default function ProjectRecord({ projectId }: { projectId: string }) {
           </motion.div>
         )}
       </div>
+
+      <DeleteCrmProjectDialog
+        open={deleteOpen}
+        projectName={project?.projectName ?? ''}
+        loading={deleting}
+        onClose={() => !deleting && setDeleteOpen(false)}
+        onConfirm={confirmDeleteProject}
+      />
     </AutomateShell>
   )
 }

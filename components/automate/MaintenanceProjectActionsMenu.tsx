@@ -249,7 +249,7 @@ export default function MaintenanceProjectActionsMenu({
                 <Trash2 className="mt-0.5 h-4 w-4 shrink-0 text-red-300" />
                 <span>
                   <span className="block text-red-100">Delete project</span>
-                  <span className="text-[11px] text-red-200/60">Admin · permanent</span>
+                  <span className="text-[11px] text-red-200/60">Permanent removal</span>
                 </span>
               </button>
             </>

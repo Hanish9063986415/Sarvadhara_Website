@@ -2,6 +2,19 @@ export const AUTOMATE_SESSION_COOKIE = 'automate_session'
 
 const encoder = new TextEncoder()
 
+function bytesToBase64Url(bytes: ArrayBuffer): string {
+  const u8 = new Uint8Array(bytes)
+  let binary = ''
+  for (let i = 0; i < u8.length; i++) binary += String.fromCharCode(u8[i]!)
+  const b64 =
+    typeof btoa === 'function'
+      ? btoa(binary)
+      : typeof Buffer !== 'undefined'
+        ? Buffer.from(u8).toString('base64')
+        : ''
+  return b64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
+}
+
 async function hmacSign(message: string, secret: string): Promise<string> {
   const key = await crypto.subtle.importKey(
     'raw',
@@ -11,8 +24,19 @@ async function hmacSign(message: string, secret: string): Promise<string> {
     ['sign']
   )
   const signature = await crypto.subtle.sign('HMAC', key, encoder.encode(message))
-  return Buffer.from(signature).toString('base64url')
+  return bytesToBase64Url(signature)
 }
+
+/** Returns a short admin-facing reason when Automate auth env is incomplete. */
+export function getAutomateAuthSetupError(): string | null {
+  if (!process.env.AUTOMATE_USERNAME?.trim()) return 'AUTOMATE_USERNAME is not set'
+  if (!process.env.AUTOMATE_PASSWORD) return 'AUTOMATE_PASSWORD is not set'
+  if (!process.env.AUTOMATE_SESSION_SECRET?.trim()) return 'AUTOMATE_SESSION_SECRET is not set'
+  return null
+}
+
+export const AUTOMATE_AUTH_SETUP_USER_MESSAGE =
+  'Automate sign-in is not configured on the server. In your hosting dashboard (e.g. Vercel), set AUTOMATE_USERNAME, AUTOMATE_PASSWORD, and AUTOMATE_SESSION_SECRET, then redeploy.'
 
 function timingSafeEqualString(a: string, b: string): boolean {
   if (a.length !== b.length) return false
